@@ -10,7 +10,7 @@
     "astro": "astro",
     "format": "prettier --write --plugin-search-dir=. .",
     "lint": "eslint --ext .js,.cjs,.mjs,.ts,.astro .",
-    "fix": "prettier --write --plugin-search-dir=. . && eslint --ext .js,.cjs,.mjs,.ts,.astro ."
+    "fix": "prettier --write --plugin-search-dir=. . && eslint --ext .js,.cjs,.mjs,.ts,.astro --fix ."
   },
   "dependencies": {
     "@astrojs/tailwind": "^3.1.3",

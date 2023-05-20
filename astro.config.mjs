@@ -1,7 +1,7 @@
-import { defineConfig } from 'astro/config'
-
-import { fileURLToPath } from 'url'
 import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+import { defineConfig } from 'astro/config'
 
 import tailwind from '@astrojs/tailwind'
 

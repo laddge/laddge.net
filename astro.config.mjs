@@ -11,7 +11,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@/': `${path.resolve(dirname(fileURLToPath(imoort.meta.url)), 'src')}/`
+        '@/': `${path.resolve(dirname(fileURLToPath(import.meta.url)), 'src')}/`
       }
     }
   }

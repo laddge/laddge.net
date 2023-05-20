@@ -1,7 +1,6 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
   env: {
     browser: true,
     node: true,
@@ -9,6 +8,27 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint', 'import', 'unused-imports'],
+  rules: {
+    '@typescript-eslint/no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc', caseInsensitive: true },
+        pathGroupsExcludedImportTypes: ['builtin'],
+        pathGroups: [
+          {
+            pattern: 'astro/**',
+            group: 'external',
+            position: 'before',
+          },
+        ],
+      },
+    ],
   },
   extends: [
     'eslint:recommended',

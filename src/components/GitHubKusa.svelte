@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
   import axios from 'axios'
+  import { onMount } from 'svelte'
 
   const ghToken = atob('Z2hwXzZQdU9DRnZ4TkFEdXZPYzFSSlNMdHhJMHhwT0FjazFBaDJPZAo=')
   let displayEl: HTMLElement
@@ -10,7 +10,7 @@
     }
   }
   let levels: number[] = []
-  let total:number
+  let total: number
 
   onMount(() => {
     axios({
@@ -60,7 +60,14 @@
         {total.toLocaleString()} contributions in the last year
       </div>
       <div class="flex-none flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3 h-3">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2.5"
+          stroke="currentColor"
+          class="w-3 h-3"
+        >
           <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
         </svg>
         {#each Array(5) as _, level}
@@ -69,7 +76,14 @@
             style={`filter: brightness(${(level + 1) / 5});`}
           />
         {/each}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3 h-3">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2.5"
+          stroke="currentColor"
+          class="w-3 h-3"
+        >
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
         </svg>
       </div>

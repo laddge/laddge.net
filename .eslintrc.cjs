@@ -34,6 +34,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:astro/recommended',
+    'plugin:svelte/recommended',
     'prettier',
   ],
   overrides: [
@@ -43,6 +44,14 @@ module.exports = {
       parserOptions: {
         parser: '@typescript-eslint/parser',
         extraFileExtensions: ['.astro'],
+      },
+    },
+    {
+      files: ['*.svelte'],
+      parser: 'svelte-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.svelte'],
       },
     },
   ],

@@ -1,14 +1,7 @@
 <script lang="ts">
   import { format } from 'date-fns'
 
-  interface Article {
-    slug: string
-    href: string
-    title: string
-    tags: string[]
-    pubDate: Date
-    image: string
-  }
+  import type { Article } from '@/lib/getArticles'
 
   export let articles: Article[]
 </script>
@@ -21,16 +14,30 @@
         style="background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIj48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik0xOS41IDE0LjI1di0yLjYyNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1aC0xLjVBMS4xMjUgMS4xMjUgMCAwMTEzLjUgNy4xMjV2LTEuNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1SDguMjVtMCAxMi43NWg3LjVtLTcuNSAzSDEyTTEwLjUgMi4yNUg1LjYyNWMtLjYyMSAwLTEuMTI1LjUwNC0xLjEyNSAxLjEyNXYxNy4yNWMwIC42MjEuNTA0IDEuMTI1IDEuMTI1IDEuMTI1aDEyLjc1Yy42MjEgMCAxLjEyNS0uNTA0IDEuMTI1LTEuMTI1VjExLjI1YTkgOSAwIDAwLTktOXoiIC8+PC9zdmc+Cg==);"
       >
         <div
-          class="w-full h-full bg-no-repeat bg-center bg-cover"
+          class="w-full h-full bg-no-repeat bg-left bg-cover"
           style={`background-image: url(${article.image});`}
         />
       </div>
       <div class="min-w-0 grow">
         <a
           href={article.href}
+          target={article.articleType ? '_blank' : ''}
           class="flex max-w-fit btn btn-sm btn-ghost normal-case text-2xl text-left h-auto"
         >
-          <span class="min-w-0">{article.title}</span>
+          <span class="min-w-0"
+            >{article.title}{#if article.articleType}<svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="-6 0 36 36"
+                stroke-width="2.5"
+                class="inline w-6 h-6 stroke-neutral/75"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                /></svg
+              >{/if}</span
+          >
         </a>
         <div class="mt-0.5 px-3 flex items-center gap-1">
           <svg
@@ -48,6 +55,13 @@
             />
           </svg>
           {format(article.pubDate, 'yyyy.MM.dd')}
+          {#if article.articleType == 1}
+            <div class="bg-[#55c500] rounded text-white text-xs px-1">Qiita</div>
+          {:else if article.articleType == 2}
+            <div class="bg-[#3ea8ff] rounded text-white text-xs px-1">Zenn | Article</div>
+          {:else if article.articleType == 3}
+            <div class="bg-[#3ea8ff] rounded text-white text-xs px-1">Zenn | Scrap</div>
+          {/if}
         </div>
         <div class="flex flex-wrap gap-1 px-2">
           {#each article.tags as tag}

@@ -1,21 +1,10 @@
 ---
-import { getCollection } from 'astro:content'
-
 import ArticleList from '@/components/ArticleList.svelte'
 import GitHubKusa from '@/components/GitHubKusa.svelte'
 import Layout from '@/layouts/Layout.astro'
+import { getArticles } from '@/lib/getArticles'
 
-const blogEntries = await getCollection('blog', ({ data }) => {
-  return data.draft !== true
-})
-const articles = blogEntries.map((entry) => ({
-  slug: entry.slug,
-  href: '/blog/' + entry.slug,
-  title: entry.data.title,
-  tags: entry.data.tags,
-  pubDate: entry.data.pubDate,
-  image: entry.data.image,
-}))
+const articles = await getArticles()
 ---
 
 <Layout title="Laddge" description="パソコン好きの学生です。趣味でプログラミングなどをしています。">

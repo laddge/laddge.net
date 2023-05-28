@@ -12,11 +12,6 @@ export interface Article {
   articleType: number
 }
 
-const getDOM = async (url: string) => {
-  const res = await axios.get(url)
-  return new JSDOM(res.data)
-}
-
 export const getArticles = async () => {
   const blogEntries = await getCollection('blog', ({ data }) => {
     return data.draft !== true
@@ -35,7 +30,7 @@ export const getArticles = async () => {
     headers: { Authorization: 'Bearer 072114f0c0c2cb62d76729b19dba8ce6534cc3dd' },
   })
   for (const item of qRes.data) {
-    const meta = (await getDOM(item.url)).window.document.querySelector(
+    const meta = (await JSDOM.fromURL(item.url)).window.document.querySelector(
       'meta[property="og:image"]'
     ) as HTMLMetaElement
     const image = meta ? meta.content : ''
@@ -53,7 +48,7 @@ export const getArticles = async () => {
 
   const zaRes = await axios.get('https://zenn.dev/api/articles?username=laddge')
   for (const item of zaRes.data.articles) {
-    const doc = (await getDOM(`https://zenn.dev${item.path}`)).window.document
+    const doc = (await JSDOM.fromURL(`https://zenn.dev${item.path}`)).window.document
     const tags: string[] = Array.from(
       doc.querySelectorAll('a[href^="/topics"] > div[class^="View_topicName"]')
     )
@@ -75,9 +70,9 @@ export const getArticles = async () => {
 
   const zsRes = await axios.get('https://zenn.dev/api/scraps?username=laddge')
   for (const item of zsRes.data.scraps) {
-    const meta = (await getDOM(`https://zenn.dev${item.path}`)).window.document.querySelector(
-      'meta[property="og:image"]'
-    ) as HTMLMetaElement
+    const meta = (
+      await JSDOM.fromURL(`https://zenn.dev${item.path}`)
+    ).window.document.querySelector('meta[property="og:image"]') as HTMLMetaElement
     const image = meta ? meta.content : ''
 
     articles.push({

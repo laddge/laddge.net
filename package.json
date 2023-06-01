@@ -20,6 +20,7 @@
     "axios": "^1.4.0",
     "daisyui": "^2.51.6",
     "date-fns": "^2.30.0",
+    "fuse.js": "^6.6.2",
     "jsdom": "^22.1.0",
     "query-string": "^8.1.0",
     "svelte": "^3.54.0",

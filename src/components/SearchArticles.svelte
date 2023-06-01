@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Fuse from 'fuse.js'
   import queryString from 'query-string'
 
   import ArticleList from '@/components/ArticleList.svelte'
@@ -6,9 +7,15 @@
 
   export let allArticles: Article[]
 
+  const fuse = new Fuse(allArticles, {
+    keys: ['title', 'tags'],
+    shouldSort: false,
+    useExtendedSearch: true,
+  })
   let qsLoaded = false
   let articles: Article[] = allArticles
   let tab: number
+  let query = ''
   let tags: string[] = []
 
   $: {
@@ -30,17 +37,28 @@
       url.query.tab = `${tab}`
       url.query.tags = tags
       window.history.pushState({}, '', queryString.stringifyUrl(url))
+      if (query) {
+        articles = fuse.search(query).map((item) => item.item)
+      } else {
+        articles = allArticles
+      }
       if (tags.length) {
-        articles = allArticles.filter(
+        articles = articles.filter(
           (article) => article.tags.filter((tag) => tags.indexOf(tag) != -1).length
         )
       } else {
-        articles = allArticles
+        articles = articles
       }
     }
   }
 </script>
 
+<input
+  type="text"
+  placeholder="Search"
+  bind:value={query}
+  class="input input-bordered input-primary w-full"
+/>
 <div class="py-3">
   <h3 class="text-xl font-bold mb-1"># tags</h3>
   <div class="overflow-auto h-44">

@@ -9,6 +9,7 @@ const articles = (await getArticles()).slice(0, 6)
 
 <Layout title="Laddge" description="パソコン好きの学生です。趣味でプログラミングなどをしています。">
   <div
+    id="hero"
     class="hero min-h-screen bg-gradient-to-br from-primary-focus to-secondary text-primary-content"
   >
     <div class="hero-content text-center">
@@ -203,6 +204,7 @@ const articles = (await getArticles()).slice(0, 6)
 <style is:global>
   #navbar {
     @apply bg-transparent;
+    transition: background-color 0.1s linear;
   }
 
   #navbar.scrolled {
@@ -211,16 +213,23 @@ const articles = (await getArticles()).slice(0, 6)
 </style>
 
 <script>
-  const toggleNavbar = () => {
-    const navbar = document.getElementById('navbar')
-    if (!navbar) return
-    if (window.pageYOffset > 250) {
-      navbar.classList.add('scrolled')
-    } else if (window.pageYOffset < 200) {
-      navbar.classList.remove('scrolled')
-    }
-  }
+  const navbar = document.getElementById('navbar')
+  const hero = document.querySelector('#hero')
 
-  toggleNavbar()
-  window.addEventListener('scroll', toggleNavbar)
+  if (navbar && hero) {
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          navbar.classList.remove('scrolled')
+        } else {
+          navbar.classList.add('scrolled')
+        }
+      }
+    }
+
+    const observer = new IntersectionObserver(callback, {
+      rootMargin: `-${navbar.clientHeight}px 0px 0px 0px`,
+    })
+    observer.observe(hero)
+  }
 </script>

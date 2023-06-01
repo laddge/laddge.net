@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content'
+import { format } from 'date-fns'
+
+import Layout from '@/layouts/Layout.astro'
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection('blog')
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }))
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+<Layout title={post.data.title} description={`${format(post.data.pubDate, 'yyyy年M月d日の記事')}`}>
+  <div class="p-6 prose mx-auto">
+    <div class="pt-16">
+      <a href="/articles" class="text-lg flex gap-2 items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+          ><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"
+          ></path></svg
+        >
+        Articles
+      </a>
+      <h1 class="text-3xl font-bold mt-6 mb-2">{post.data.title}</h1>
+      <div class="flex flex-wrap gap-1">
+        {
+          post.data.tags.map((tag: string) => (
+            <a
+              href={`/articles?tags=${tag}`}
+              class="btn btn-ghost px-1 h-auto min-h-0 normal-case text-base font-normal text-neutral/75"
+            >
+              #{tag}
+            </a>
+          ))
+        }
+      </div>
+      <div class="my-2">
+        {format(post.data.pubDate, 'MMM dd, yyyy')}
+      </div>
+    </div>
+    <div
+      class="my-4 flex-none w-full aspect-[1200/660] rounded-box bg-primary/50 bg-no-repeat bg-center bg-[length:3rem_3rem] overflow-hidden"
+      style="background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIj48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik0xOS41IDE0LjI1di0yLjYyNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1aC0xLjVBMS4xMjUgMS4xMjUgMCAwMTEzLjUgNy4xMjV2LTEuNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1SDguMjVtMCAxMi43NWg3LjVtLTcuNSAzSDEyTTEwLjUgMi4yNUg1LjYyNWMtLjYyMSAwLTEuMTI1LjUwNC0xLjEyNSAxLjEyNXYxNy4yNWMwIC42MjEuNTA0IDEuMTI1IDEuMTI1IDEuMTI1aDEyLjc1Yy42MjEgMCAxLjEyNS0uNTA0IDEuMTI1LTEuMTI1VjExLjI1YTkgOSAwIDAwLTktOXoiIC8+PC9zdmc+Cg==);"
+    >
+      <div
+        class="w-full h-full bg-no-repeat bg-left bg-cover"
+        style={`background-image: url(${post.data.image});`}
+      >
+      </div>
+    </div>
+    <Content />
+  </div>
+</Layout>

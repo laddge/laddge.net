@@ -62,7 +62,22 @@
 <div class="py-3">
   <h3 class="text-xl font-bold mb-1"># tags</h3>
   <div class="overflow-auto h-44">
-    {#each Array.from(new Set([].concat(...allArticles.map((article) => article.tags)))).sort() as tag}
+    {#each Array.from(new Set([].concat(...allArticles.map((article) => article.tags))))
+      .sort()
+      .filter((tag) => tags.indexOf(tag) != -1) as tag}
+      <label class="block flex items-center gap-2 my-2">
+        <input
+          type="checkbox"
+          bind:group={tags}
+          value={tag}
+          class="checkbox checkbox-sm checkbox-primary"
+        />
+        {tag}
+      </label>
+    {/each}
+    {#each Array.from(new Set([].concat(...allArticles.map((article) => article.tags))))
+      .sort()
+      .filter((tag) => tags.indexOf(tag) == -1) as tag}
       <label class="block flex items-center gap-2 my-2">
         <input
           type="checkbox"

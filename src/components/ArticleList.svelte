@@ -66,7 +66,7 @@
         <div class="flex flex-wrap gap-1 px-2">
           {#each article.tags as tag}
             <a
-              href={`/tags/${tag}`}
+              href={`/articles?tags=${tag}`}
               class="btn btn-ghost px-1 h-auto min-h-0 normal-case text-base font-normal text-neutral/75"
             >
               #{tag}

@@ -4,10 +4,12 @@
   import ArticleList from '@/components/ArticleList.svelte'
   import type { Article } from '@/lib/getArticles'
 
-  export let articles: Article[]
+  export let allArticles: Article[]
 
   let qsLoaded = false
+  let articles: Article[] = allArticles
   let tab: number
+  let tags: string[] = []
 
   $: {
     if (typeof window !== 'undefined') {
@@ -15,18 +17,47 @@
         const parsed = queryString.parse(window.location.search)
         qsLoaded = true
         tab = Number(parsed.tab)
+        if (parsed.tags) {
+          if (parsed.tags.length) {
+            tags = parsed.tags
+          }
+        }
       }
       if (!Number.isInteger(tab) || tab < 0 || tab >= 4) {
         tab = 0
       }
       const url = queryString.parseUrl(window.location.href, { parseFragmentIdentifier: true })
       url.query.tab = `${tab}`
+      url.query.tags = tags
       window.history.pushState({}, '', queryString.stringifyUrl(url))
+      if (tags.length) {
+        articles = allArticles.filter(
+          (article) => article.tags.filter((tag) => tags.indexOf(tag) != -1).length
+        )
+      } else {
+        articles = allArticles
+      }
     }
   }
 </script>
 
-<div class="tabs tabs-boxed">
+<div class="py-3">
+  <h3 class="text-xl font-bold mb-1"># tags</h3>
+  <div class="overflow-auto h-44">
+    {#each Array.from(new Set([].concat(...allArticles.map((article) => article.tags)))).sort() as tag}
+      <label class="block flex items-center gap-2 my-2">
+        <input
+          type="checkbox"
+          bind:group={tags}
+          value={tag}
+          class="checkbox checkbox-sm checkbox-primary"
+        />
+        {tag}
+      </label>
+    {/each}
+  </div>
+</div>
+<div class="tabs tabs-boxed mt-2">
   {#each { length: 4 } as _, i}
     <label class={`grow tab ${tab == i ? 'tab-active' : ''}`}>
       <input type="radio" bind:group={tab} name="tab" value={i} class="hidden" />

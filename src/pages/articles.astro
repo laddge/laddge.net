@@ -1,5 +1,5 @@
 ---
-import ArticleList from '@/components/ArticleList.svelte'
+import SearchArticles from '@/components/SearchArticles.svelte'
 import Layout from '@/layouts/Layout.astro'
 import { getArticles } from '@/lib/getArticles'
 
@@ -7,7 +7,7 @@ const articles = await getArticles()
 ---
 
 <Layout title="Articles | Laddge" description="ブログ等の記事を検索">
-  <div class="pt-24 pb-12 bg-base-200/50">
+  <div class="pt-24 pb-12 bg-base-200/50 min-h-screen">
     <div class="max-w-[1024px] mx-auto px-6">
       <h2 class="text-4xl font-bold mb-8 flex items-center gap-1">
         <svg
@@ -26,7 +26,7 @@ const articles = await getArticles()
         </svg>
         Articles
       </h2>
-      <ArticleList articles={articles} />
+      <SearchArticles articles={articles} client:load />
     </div>
   </div>
 </Layout>

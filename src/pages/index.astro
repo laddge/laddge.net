@@ -193,7 +193,7 @@ const articles = (await getArticles()).slice(0, 6)
         </svg>
         Articles
       </h2>
-      <ArticleList articles={articles} />
+      <ArticleList articles={articles} client:load />
       <div class="text-center pt-6">
         <a href="/articles" class="btn px-6">More</a>
       </div>

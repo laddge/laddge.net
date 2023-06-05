@@ -1,3 +1,5 @@
+import fs from 'fs'
+
 import { getCollection } from 'astro:content'
 import axios from 'axios'
 import { JSDOM } from 'jsdom'
@@ -12,7 +14,7 @@ export interface Article {
   articleType: number
 }
 
-export const getArticles = async () => {
+const fetchData = async () => {
   const blogEntries = await getCollection('blog', ({ data }) => {
     return data.draft !== true
   })
@@ -87,4 +89,19 @@ export const getArticles = async () => {
   }
 
   return articles.sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf())
+}
+
+export const getArticles = async () => {
+  try {
+    const data = fs.readFileSync('./articles.json', 'utf-8')
+    const articles = JSON.parse(data).articles
+    for (const article of articles) {
+      article.pubDate = new Date(article.pubDate)
+    }
+    return articles
+  } catch (err) {
+    const articles = await fetchData()
+    fs.writeFileSync('./articles.json', JSON.stringify({ articles }))
+    return articles
+  }
 }

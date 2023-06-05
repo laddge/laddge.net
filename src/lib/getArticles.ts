@@ -93,7 +93,7 @@ const fetchData = async () => {
 
 export const getArticles = async () => {
   try {
-    const data = fs.readFileSync('./articles.json', 'utf-8')
+    const data = fs.readFileSync('./.articles.json', 'utf-8')
     const articles = JSON.parse(data).articles
     for (const article of articles) {
       article.pubDate = new Date(article.pubDate)
@@ -101,7 +101,7 @@ export const getArticles = async () => {
     return articles
   } catch (err) {
     const articles = await fetchData()
-    fs.writeFileSync('./articles.json', JSON.stringify({ articles }))
+    fs.writeFileSync('./.articles.json', JSON.stringify({ articles }))
     return articles
   }
 }

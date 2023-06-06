@@ -2,9 +2,10 @@
 interface Props {
   title: string
   description: string
+  preloadImg?: string
 }
 
-const { title, description } = Astro.props
+const { title, description, preloadImg } = Astro.props
 ---
 
 <html lang="ja">
@@ -23,6 +24,7 @@ const { title, description } = Astro.props
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    {preloadImg && <link rel="preload" as="image" href={preloadImg} />}
     <title>{title}</title>
   </head>
   <body ontouchstart="">

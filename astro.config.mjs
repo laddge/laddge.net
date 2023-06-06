@@ -28,8 +28,15 @@ const myRemarkPlugin = () => {
                   hProperties: {
                     class: 'w-full outline outline-8 outline-base-100 outline-offset-[-4px]',
                     src: `https://hatenablog-parts.com/embed?url=${node.url}`,
+                    title: node.url,
                   },
                 },
+                children: [
+                  {
+                    type: 'text',
+                    value: node.url,
+                  },
+                ],
               },
             ],
           },
@@ -66,7 +73,7 @@ const myRemarkPlugin = () => {
               '<svg xmlns="http://www.w3.org/2000/svg" class="stroke-current h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
           }
           parent.children[index] = {
-            type: 'containerDirective',
+            type: 'element',
             data: {
               hName: 'div',
               hProperties: {
@@ -77,7 +84,7 @@ const myRemarkPlugin = () => {
             },
             children: [
               {
-                type: 'containerDirective',
+                type: 'element',
                 data: {
                   hName: 'div',
                   hProperties: {
@@ -92,7 +99,7 @@ const myRemarkPlugin = () => {
                 ],
               },
               {
-                type: 'containerDirective',
+                type: 'element',
                 data: {
                   hName: 'div',
                   hProperties: {

@@ -9,6 +9,30 @@ import { visit } from 'unist-util-visit'
 const myRemarkPlugin = () => {
   return (tree) => {
     visit(tree, (node, index, parent) => {
+      if (node.type == 'link') {
+        if (parent.children.length > 1 || node.url !== node.children[0].value) return
+        node.children = [
+          {
+            type: 'element',
+            data: {
+              hName: 'div',
+            },
+            children: [
+              {
+                type: 'element',
+                data: {
+                  hName: 'iframe',
+                  hProperties: {
+                    class: 'w-full',
+                    src: `https://hatenablog-parts.com/embed?url=${node.url}`,
+                  },
+                },
+              },
+            ],
+          },
+        ]
+        parent.children.splice(index, 1, ...node.children)
+      }
       if (
         node.type === 'textDirective' ||
         node.type === 'leafDirective' ||

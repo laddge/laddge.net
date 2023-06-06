@@ -16,6 +16,9 @@ const myRemarkPlugin = () => {
             type: 'element',
             data: {
               hName: 'div',
+              hProperties: {
+                class: 'border border-[1.5px] rounded-box overflow-hidden p-2',
+              },
             },
             children: [
               {
@@ -23,7 +26,7 @@ const myRemarkPlugin = () => {
                 data: {
                   hName: 'iframe',
                   hProperties: {
-                    class: 'w-full',
+                    class: 'w-full outline outline-8 outline-base-100 outline-offset-[-4px]',
                     src: `https://hatenablog-parts.com/embed?url=${node.url}`,
                   },
                 },

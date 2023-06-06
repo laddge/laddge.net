@@ -39,11 +39,14 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-svelte": "^2.29.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "hastscript": "^7.2.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.9.0",
-    "prettier-plugin-svelte": "^2.10.0"
+    "prettier-plugin-svelte": "^2.10.0",
+    "remark-directive": "^2.0.1",
+    "unist-util-visit": "^4.1.2"
   },
   "lint-staged": {
     "*.{js,cjs,mjs,ts,astro,svelte}": [

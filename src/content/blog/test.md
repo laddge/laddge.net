@@ -5,7 +5,23 @@ image: 'https://github.com/laddge.png'
 pubDate: 2023-04-19
 ---
 
-# Test
+## Test
 
 - hoge
 - fuga
+
+:::info
+info
+:::
+
+:::success
+success
+:::
+
+:::warning
+warning
+:::
+
+:::error
+error
+:::

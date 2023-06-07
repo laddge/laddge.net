@@ -9,7 +9,7 @@ module.exports = {
     themes: [
       {
         laddge: {
-          primary: '#67bdda',
+          primary: '#76c3dd',
           'primary-focus': '#34a8cf',
           'primary-content': '#003142',
           secondary: '#c4b4fd',

@@ -26,8 +26,9 @@ const myRemarkPlugin = () => {
                 data: {
                   hName: 'iframe',
                   hProperties: {
-                    class: 'w-full outline outline-8 outline-base-100 outline-offset-[-4px]',
-                    src: `https://hatenablog-parts.com/embed?url=${node.url}`,
+                    class:
+                      'w-full outline outline-8 outline-base-100 outline-offset-[-4px] lazyload',
+                    dataSrc: `https://hatenablog-parts.com/embed?url=${node.url}`,
                     title: node.url,
                   },
                 },

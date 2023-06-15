@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config'
 import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import { h } from 'hastscript'
+import rehypeSlug from 'rehype-slug'
+import rehypeToc from 'rehype-toc'
 import remarkDirective from 'remark-directive'
 import { visit } from 'unist-util-visit'
 
@@ -125,6 +127,7 @@ const myRemarkPlugin = () => {
 export default defineConfig({
   markdown: {
     remarkPlugins: [remarkDirective, myRemarkPlugin],
+    rehypePlugins: [rehypeSlug, rehypeToc],
   },
   integrations: [tailwind(), svelte()],
 })

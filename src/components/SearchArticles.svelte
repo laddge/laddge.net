@@ -95,7 +95,7 @@
     <label class={`grow tab ${tab == i ? 'tab-active' : ''}`}>
       <input type="radio" bind:group={tab} name="tab" value={i} class="hidden" />
       {['All', 'Blog', 'Qiita', 'Zenn'][i]}
-      <div class="badge badge-sm ml-2">
+      <div class="badge badge-sm badge-outline ml-2">
         {#if i == 0}
           {articles.length}
         {:else if i == 1}

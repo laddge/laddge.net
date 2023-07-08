@@ -24,6 +24,14 @@ const { title, description, preloadImg } = Astro.props
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/laddge/image/upload/f_auto,q_auto,b_auto,c_pad,h_630,w_1200/v1674993708/laddge.net/laddge.png"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@laddge_" />
     {preloadImg && <link rel="preload" as="image" href={preloadImg} />}
     <title>{title}</title>
   </head>

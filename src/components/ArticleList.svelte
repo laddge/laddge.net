@@ -63,11 +63,20 @@
           </svg>
           {format(article.pubDate, 'yyyy.MM.dd')}
           {#if article.articleType == 1}
-            <div class="bg-[#55c500] rounded text-white text-xs px-1">Qiita</div>
+            <div class="text-xs px-1 flex items-center gap-1">
+              <div class="w-2 h-2 rounded-full bg-[#55c500]" />
+              Qiita
+            </div>
           {:else if article.articleType == 2}
-            <div class="bg-[#3ea8ff] rounded text-white text-xs px-1">Zenn | Article</div>
+            <div class="text-xs px-1 flex items-center gap-1">
+              <div class="w-2 h-2 rounded-full bg-[#3ea8ff]" />
+              Zenn - Article
+            </div>
           {:else if article.articleType == 3}
-            <div class="bg-[#3ea8ff] rounded text-white text-xs px-1">Zenn | Scrap</div>
+            <div class="text-xs px-1 flex items-center gap-1">
+              <div class="w-2 h-2 rounded-full bg-[#3ea8ff]" />
+              Zenn - Scrap
+            </div>
           {/if}
         </div>
         <div class="flex flex-wrap gap-1 px-2">

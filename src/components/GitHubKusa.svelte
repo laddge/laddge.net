@@ -51,13 +51,24 @@
       {#each levels as level}
         <div
           class="w-3 h-3 bg-primary rounded-sm"
-          style={`filter: brightness(${(level + 1) / 5});`}
+          style={`filter: saturate(${level / 5}) brightness(${(6 - level) / 3}) opacity(${
+            (level + 1) / 2
+          });`}
         />
       {/each}
     </div>
     <div class="flex gap-6 w-full">
       <div class="grow">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="inline w-4 h-4 mr-1"><path d="M1 2.5A2.5 2.5 0 0 1 3.5 0h8.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0V1.5h-8a1 1 0 0 0-1 1v6.708A2.493 2.493 0 0 1 3.5 9h3.25a.75.75 0 0 1 0 1.5H3.5a1 1 0 0 0 0 2h5.75a.75.75 0 0 1 0 1.5H3.5A2.5 2.5 0 0 1 1 11.5Zm13.23 7.79h-.001l-1.224-1.224v6.184a.75.75 0 0 1-1.5 0V9.066L10.28 10.29a.75.75 0 0 1-1.06-1.061l2.505-2.504a.75.75 0 0 1 1.06 0L15.29 9.23a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018Z"></path></svg>{total.toLocaleString()} <span class="hidden md:inline">contributions in the last year</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          class="inline w-4 h-4 mr-1"
+          ><path
+            d="M1 2.5A2.5 2.5 0 0 1 3.5 0h8.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0V1.5h-8a1 1 0 0 0-1 1v6.708A2.493 2.493 0 0 1 3.5 9h3.25a.75.75 0 0 1 0 1.5H3.5a1 1 0 0 0 0 2h5.75a.75.75 0 0 1 0 1.5H3.5A2.5 2.5 0 0 1 1 11.5Zm13.23 7.79h-.001l-1.224-1.224v6.184a.75.75 0 0 1-1.5 0V9.066L10.28 10.29a.75.75 0 0 1-1.06-1.061l2.505-2.504a.75.75 0 0 1 1.06 0L15.29 9.23a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018Z"
+          /></svg
+        >{total.toLocaleString()}
+        <span class="hidden md:inline">contributions in the last year</span>
       </div>
       <div class="flex-none flex items-center gap-2">
         <svg
@@ -73,7 +84,9 @@
         {#each Array(5) as _, level}
           <div
             class="w-3 h-3 bg-primary rounded-sm"
-            style={`filter: brightness(${(level + 1) / 5});`}
+            style={`filter: saturate(${level / 5}) brightness(${(6 - level) / 3}) opacity(${
+              (level + 1) / 2
+            });`}
           />
         {/each}
         <svg

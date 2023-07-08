@@ -53,49 +53,51 @@
   }
 </script>
 
-<input
-  type="text"
-  placeholder="Search"
-  bind:value={query}
-  class="input input-bordered input-primary w-full"
-/>
-<div class="py-3">
-  <h3 class="text-xl font-bold mb-1"># tags</h3>
-  <div class="overflow-auto h-44">
-    {#each Array.from(new Set([].concat(...allArticles.map((article) => article.tags))))
-      .sort()
-      .filter((tag) => tags.indexOf(tag) != -1) as tag}
-      <label class="block flex items-center gap-2 my-2">
-        <input
-          type="checkbox"
-          bind:group={tags}
-          value={tag}
-          class="checkbox checkbox-sm checkbox-primary"
-        />
-        {tag}
-      </label>
-    {/each}
-    {#each Array.from(new Set([].concat(...allArticles.map((article) => article.tags))))
-      .sort()
-      .filter((tag) => tags.indexOf(tag) == -1) as tag}
-      <label class="block flex items-center gap-2 my-2">
-        <input
-          type="checkbox"
-          bind:group={tags}
-          value={tag}
-          class="checkbox checkbox-sm checkbox-primary"
-        />
-        {tag}
-      </label>
-    {/each}
+<div class="search-block p-6 mb-8 rounded-box border">
+  <input
+    type="text"
+    placeholder="Search"
+    bind:value={query}
+    class="input input-bordered input-primary w-full"
+  />
+  <div class="pt-3">
+    <h3 class="text-xl font-bold mb-1"># tags</h3>
+    <div class="overflow-auto h-44 bg-base-100 border rounded-lg px-2">
+      {#each Array.from(new Set([].concat(...allArticles.map((article) => article.tags))))
+        .sort()
+        .filter((tag) => tags.indexOf(tag) != -1) as tag}
+        <label class="block flex items-center gap-2 my-2">
+          <input
+            type="checkbox"
+            bind:group={tags}
+            value={tag}
+            class="checkbox checkbox-sm checkbox-primary"
+          />
+          {tag}
+        </label>
+      {/each}
+      {#each Array.from(new Set([].concat(...allArticles.map((article) => article.tags))))
+        .sort()
+        .filter((tag) => tags.indexOf(tag) == -1) as tag}
+        <label class="block flex items-center gap-2 my-2">
+          <input
+            type="checkbox"
+            bind:group={tags}
+            value={tag}
+            class="checkbox checkbox-sm checkbox-primary"
+          />
+          {tag}
+        </label>
+      {/each}
+    </div>
   </div>
 </div>
-<div class="tabs tabs-boxed mt-2 mb-4">
+<div class="tabs mt-2 mb-4">
   {#each { length: 4 } as _, i}
-    <label class={`grow tab ${tab == i ? 'tab-active' : ''}`}>
+    <label class={`grow tab tab-bordered ${tab == i ? 'tab-active' : ''}`}>
       <input type="radio" bind:group={tab} name="tab" value={i} class="hidden" />
       {['All', 'Blog', 'Qiita', 'Zenn'][i]}
-      <div class="badge badge-sm badge-outline ml-2">
+      <div class="badge badge-sm text-current border-current ml-2">
         {#if i == 0}
           {articles.length}
         {:else if i == 1}
@@ -118,3 +120,15 @@
 {:else}
   <ArticleList {articles} />
 {/if}
+
+<style>
+  .search-block {
+    background-image: repeating-linear-gradient(
+      45deg,
+      hsl(var(--b1)),
+      hsl(var(--b1)) 13px,
+      hsl(var(--b2)) 13px,
+      hsl(var(--b2)) 14px
+    );
+  }
+</style>

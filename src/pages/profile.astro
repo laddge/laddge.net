@@ -1,0 +1,85 @@
+---
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout title="Profile | Laddge" description="プロフィール">
+  <div class="pt-28 pb-12 bg-base-100 min-h-screen">
+    <div class="max-w-[1024px] mx-auto px-6 prose">
+      <h2 class="text-4xl font-bold mb-8 flex items-center gap-1">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="w-8 h-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+          ></path>
+        </svg>
+        Profile
+      </h2>
+      <div class="flex flex-wrap justify-center items-center gap-x-8">
+        <div class="w-fit">
+          <img
+            src="https://res.cloudinary.com/laddge/image/upload/f_auto,q_auto,c_scale,w_240,h_240/v1675575730/laddge.net/letsnote.jpg"
+            height="240"
+            width="240"
+            alt="profile image"
+            class="rounded-full max-w-[50vw] max-h-[50vw]"
+            loading="lazy"
+          />
+        </div>
+        <div class="w-full max-w-md">
+          <table>
+            <tr>
+              <td class="font-bold"> Name</td>
+              <td> 髙橋 朋希 (TAKAHASHI Tomoki)</td>
+            </tr>
+            <tr>
+              <td class="font-bold"> Birthday</td>
+              <td> 2004-06-28</td>
+            </tr>
+            <tr>
+              <td class="font-bold"> Github</td>
+              <td>
+                <a href="https://github.com/laddge" target="_blank">laddge</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-bold"> Twitter</td>
+              <td>
+                <a href="https://twitter.com/laddge_" target="_blank">laddge_</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-bold"> Threads</td>
+              <td>
+                <a href="https://www.threads.net/@laddge_" target="_blank">laddge_</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-bold"> Instagram</td>
+              <td>
+                <a href="https://instagram.com/laddge_" target="_blank">laddge_</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="w-fit mt-12 mx-auto">
+        <p>長野県出身。中1 (13歳/2017年) から独学でプログラミングをやってます。</p>
+        <p>Linuxが大好きで、PythonやJavaScriptを書いたり、ウェブアプリを作ったりします。</p>
+        <p>ガンダムが好きです。</p>
+        <p>
+          ちなみに、<code>Laddge</code>は、<code>ladder + bridge</code
+          >の造語です。本名の姓から来ています。
+        </p>
+        <p>よろしくお願いします。</p>
+      </div>
+    </div>
+  </div>
+</Layout>

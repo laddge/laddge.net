@@ -1,11 +1,13 @@
 ---
+import CNAME from '../../public/CNAME?raw'
 interface Props {
   title: string
   description: string
   preloadImg?: string
+  ogImg?: string
 }
 
-const { title, description, preloadImg } = Astro.props
+const { title, description, preloadImg, ogImg } = Astro.props
 ---
 
 <html lang="ja" class="h-full">
@@ -26,10 +28,23 @@ const { title, description, preloadImg } = Astro.props
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta
-      property="og:image"
-      content="https://res.cloudinary.com/laddge/image/upload/f_auto,q_auto,b_auto,c_pad,h_630,w_1200/v1674993708/laddge.net/laddge.png"
-    />
+    {
+      ogImg ? (
+        <meta
+          property="og:image"
+          content={
+            ogImg.slice(0, 1) == '/'
+              ? `https://${CNAME.slice(0, CNAME.indexOf('\n'))}${ogImg}`
+              : ogImg
+          }
+        />
+      ) : (
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/laddge/image/upload/f_auto,q_auto,b_auto,c_pad,h_630,w_1200/v1674993708/laddge.net/laddge.png"
+        />
+      )
+    }
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@laddge_" />
     {preloadImg && <link rel="preload" as="image" href={preloadImg} />}

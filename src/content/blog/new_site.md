@@ -40,7 +40,7 @@ QiitaやZennに書けないような、日常や趣味、旅行などのログ�
 
 ## ソースコード
 
-https://github.com/laddge/astro-blog
+https://github.com/laddge/laddge.github.io
 
 ソースはGitHubで公開していますが、まだまだ駆け出しなので読みづらいかもしれません。
 

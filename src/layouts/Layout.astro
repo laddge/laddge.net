@@ -30,22 +30,27 @@ const { title, description, preloadImg, ogImg } = Astro.props
     <meta property="og:description" content={description} />
     {
       ogImg ? (
-        <meta
-          property="og:image"
-          content={
-            ogImg.slice(0, 1) == '/'
-              ? `https://${CNAME.slice(0, CNAME.indexOf('\n'))}${ogImg}`
-              : ogImg
-          }
-        />
+        <>
+          <meta
+            property="og:image"
+            content={
+              ogImg.slice(0, 1) == '/'
+                ? `https://${CNAME.slice(0, CNAME.indexOf('\n'))}${ogImg}`
+                : ogImg
+            }
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+        </>
       ) : (
-        <meta
-          property="og:image"
-          content="https://res.cloudinary.com/laddge/image/upload/f_auto,q_auto,b_auto,c_pad,h_630,w_1200/v1674993708/laddge.net/laddge.png"
-        />
+        <>
+          <meta
+            property="og:image"
+            content="https://res.cloudinary.com/laddge/image/upload/f_auto,q_auto,b_auto,c_pad,h_630,w_1200/v1674993708/laddge.net/laddge.png"
+          />
+          <meta name="twitter:card" content="summary" />
+        </>
       )
     }
-    <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@laddge_" />
     {preloadImg && <link rel="preload" as="image" href={preloadImg} />}
     <title>{title}</title>

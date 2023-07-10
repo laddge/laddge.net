@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 
+import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import { h } from 'hastscript'
@@ -8,6 +9,7 @@ import rehypeToc from 'rehype-toc'
 import remarkDirective from 'remark-directive'
 import { visit } from 'unist-util-visit'
 
+import CNAME from './public/CNAME?raw'
 const myRemarkPlugin = () => {
   return (tree) => {
     visit(tree, (node, index, parent) => {
@@ -52,7 +54,6 @@ const myRemarkPlugin = () => {
         node.type === 'containerDirective'
       ) {
         const data = node.data || (node.data = {})
-
         if (['info', 'success', 'warning', 'error'].indexOf(node.name) != -1) {
           const bg = {
             info: 'bg-info',
@@ -125,9 +126,10 @@ const myRemarkPlugin = () => {
 
 // https://astro.build/config
 export default defineConfig({
+  site: `https://${CNAME.slice(0, CNAME.indexOf('\n'))}`,
   markdown: {
     remarkPlugins: [remarkDirective, myRemarkPlugin],
     rehypePlugins: [rehypeSlug, rehypeToc],
   },
-  integrations: [tailwind(), svelte()],
+  integrations: [tailwind(), svelte(), sitemap()],
 })

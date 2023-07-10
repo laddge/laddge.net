@@ -40,7 +40,7 @@ QiitaやZennに書けないような、日常や趣味、旅行などのログ�
 
 ## ソースコード
 
-https://github.com/laddge/laddge.github.io
+https://github.com/laddge/mysite
 
 ソースはGitHubで公開していますが、まだまだ駆け出しなので読みづらいかもしれません。
 

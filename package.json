@@ -19,7 +19,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.4.4",
     "axios": "^1.4.0",
-    "daisyui": "^3.1.5",
+    "daisyui": "^4.7.2",
     "date-fns": "^2.30.0",
     "fuse.js": "^6.6.2",
     "jsdom": "^22.1.0",

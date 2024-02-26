@@ -21,8 +21,8 @@ dependencies:
     specifier: ^1.4.0
     version: 1.4.0
   daisyui:
-    specifier: ^3.1.5
-    version: 3.1.5(postcss@8.4.35)
+    specifier: ^4.7.2
+    version: 4.7.2(postcss@8.4.35)
   date-fns:
     specifier: ^2.30.0
     version: 2.30.0
@@ -1845,10 +1845,6 @@ packages:
     dev: false
     optional: true
 
-  /colord@2.9.3:
-    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
-    dev: false
-
   /colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
     dev: true
@@ -1922,19 +1918,21 @@ packages:
       rrweb-cssom: 0.6.0
     dev: false
 
-  /daisyui@3.1.5(postcss@8.4.35):
-    resolution: {integrity: sha512-3nk5L//IU31ISzsonKEFG8ris8hS/MRAc+PrOTOyRbssjv1fYmNKSdIrOhG6op2ED3RyJL4p6I81JUwd7RWqTw==}
+  /culori@3.3.0:
+    resolution: {integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
+
+  /daisyui@4.7.2(postcss@8.4.35):
+    resolution: {integrity: sha512-9UCss12Zmyk/22u+JbkVrHHxOzFOyY17HuqP5LeswI4hclbj6qbjJTovdj2zRy8cCH6/n6Wh0lTLjriGnyGh0g==}
     engines: {node: '>=16.9.0'}
-    peerDependencies:
-      postcss: ^8
     dependencies:
-      colord: 2.9.3
       css-selector-tokenizer: 0.8.0
-      postcss: 8.4.35
+      culori: 3.3.0
+      picocolors: 1.0.0
       postcss-js: 4.0.1(postcss@8.4.35)
-      tailwindcss: 3.3.2
     transitivePeerDependencies:
-      - ts-node
+      - postcss
     dev: false
 
   /data-urls@4.0.0:

@@ -92,7 +92,7 @@
     </div>
   </div>
 </div>
-<div class="tabs mt-2 mb-4">
+<div class="tabs tabs-bordered mt-2 mb-4">
   {#each { length: 4 } as _, i}
     <label class={`grow tab tab-bordered ${tab == i ? 'tab-active' : ''}`}>
       <input type="radio" bind:group={tab} name="tab" value={i} class="hidden" />

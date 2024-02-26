@@ -125,10 +125,10 @@
   .search-block {
     background-image: repeating-linear-gradient(
       45deg,
-      hsl(var(--b1)),
-      hsl(var(--b1)) 13px,
-      hsl(var(--b2)) 13px,
-      hsl(var(--b2)) 14px
+      oklch(var(--b1)),
+      oklch(var(--b1)) 13px,
+      oklch(var(--b2)) 13px,
+      oklch(var(--b2)) 14px
     );
   }
 </style>

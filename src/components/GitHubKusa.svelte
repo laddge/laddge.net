@@ -52,7 +52,7 @@
         <div
           class="w-3 h-3 bg-primary rounded-sm"
           style={`filter: saturate(${level / 5}) brightness(${(6 - level) / 3}) opacity(${
-            (level + 1) / 2
+            (level + 1) / 3
           });`}
         />
       {/each}
@@ -85,7 +85,7 @@
           <div
             class="w-3 h-3 bg-primary rounded-sm"
             style={`filter: saturate(${level / 5}) brightness(${(6 - level) / 3}) opacity(${
-              (level + 1) / 2
+              (level + 1) / 3
             });`}
           />
         {/each}

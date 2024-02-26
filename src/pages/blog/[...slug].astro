@@ -61,11 +61,12 @@ const { Content } = await post.render()
       class="my-4 flex-none w-full aspect-[1200/630] rounded-box bg-base-200 bg-no-repeat bg-center bg-[length:3rem_3rem] overflow-hidden"
       style="background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIj48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik0xOS41IDE0LjI1di0yLjYyNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1aC0xLjVBMS4xMjUgMS4xMjUgMCAwMTEzLjUgNy4xMjV2LTEuNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1SDguMjVtMCAxMi43NWg3LjVtLTcuNSAzSDEyTTEwLjUgMi4yNUg1LjYyNWMtLjYyMSAwLTEuMTI1LjUwNC0xLjEyNSAxLjEyNXYxNy4yNWMwIC42MjEuNTA0IDEuMTI1IDEuMTI1IDEuMTI1aDEyLjc1Yy42MjEgMCAxLjEyNS0uNTA0IDEuMTI1LTEuMTI1VjExLjI1YTkgOSAwIDAwLTktOXoiIC8+PC9zdmc+Cg==);"
     >
-      <div
-        class="w-full h-full bg-no-repeat bg-left bg-cover"
-        style={`background-image: url(${post.data.image});`}
-      >
-      </div>
+      <img
+        src={post.data.image}
+        alt={post.data.slug}
+        class="w-full h-full object-contain m-0"
+        loading="lazy"
+      />
     </div>
     <Content />
   </div>

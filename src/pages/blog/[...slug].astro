@@ -119,3 +119,30 @@ const { Content, headings } = await post.render()
     </div>
   </div>
 </Layout>
+
+<style is:global>
+  .rlc-container {
+    @apply block rounded-box bg-base-200 w-full p-4 no-underline hover:underline grid grid-cols-3 items-center gap-4;
+  }
+  .rlc-info {
+    @apply col-span-2;
+  }
+  .rlc-title {
+    @apply text-xl font-bold whitespace-nowrap overflow-hidden text-ellipsis mb-2;
+  }
+  .rlc-description {
+    @apply line-clamp-2 text-sm;
+  }
+  .rlc-url-container {
+    @apply flex gap-2 items-center mt-2;
+  }
+  .rlc-favicon {
+    @apply m-0 flex-none w-4 h-4;
+  }
+  .rlc-url {
+    @apply overflow-hidden text-ellipsis;
+  }
+  .rlc-image {
+    @apply rounded-xl m-0;
+  }
+</style>

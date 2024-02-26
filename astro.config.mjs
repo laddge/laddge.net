@@ -5,47 +5,13 @@ import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import { h } from 'hastscript'
 import remarkDirective from 'remark-directive'
+import rlc from 'remark-link-card'
 import { visit } from 'unist-util-visit'
 
 import CNAME from './public/CNAME?raw'
 const myRemarkPlugin = () => {
   return (tree) => {
     visit(tree, (node, index, parent) => {
-      if (node.type == 'link') {
-        if (parent.children.length > 1 || node.url !== node.children[0].value) return
-        node.children = [
-          {
-            type: 'element',
-            data: {
-              hName: 'div',
-              hProperties: {
-                class: 'border border-[1.5px] rounded-box overflow-hidden p-2',
-              },
-            },
-            children: [
-              {
-                type: 'element',
-                data: {
-                  hName: 'iframe',
-                  hProperties: {
-                    class:
-                      'w-full outline outline-8 outline-base-100 outline-offset-[-4px] lazyload',
-                    dataSrc: `https://hatenablog-parts.com/embed?url=${node.url}`,
-                    title: node.url,
-                  },
-                },
-                children: [
-                  {
-                    type: 'text',
-                    value: node.url,
-                  },
-                ],
-              },
-            ],
-          },
-        ]
-        parent.children.splice(index, 1, ...node.children)
-      }
       if (
         node.type === 'textDirective' ||
         node.type === 'leafDirective' ||
@@ -126,7 +92,7 @@ const myRemarkPlugin = () => {
 export default defineConfig({
   site: `https://${CNAME.slice(0, CNAME.indexOf('\n'))}`,
   markdown: {
-    remarkPlugins: [remarkDirective, myRemarkPlugin],
+    remarkPlugins: [rlc, remarkDirective, myRemarkPlugin],
   },
   integrations: [tailwind(), svelte(), sitemap()],
 })

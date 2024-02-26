@@ -4,8 +4,6 @@ import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import { h } from 'hastscript'
-import rehypeSlug from 'rehype-slug'
-import rehypeToc from 'rehype-toc'
 import remarkDirective from 'remark-directive'
 import { visit } from 'unist-util-visit'
 
@@ -129,7 +127,6 @@ export default defineConfig({
   site: `https://${CNAME.slice(0, CNAME.indexOf('\n'))}`,
   markdown: {
     remarkPlugins: [remarkDirective, myRemarkPlugin],
-    rehypePlugins: [rehypeSlug, rehypeToc],
   },
   integrations: [tailwind(), svelte(), sitemap()],
 })

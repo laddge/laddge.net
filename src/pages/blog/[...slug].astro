@@ -13,7 +13,7 @@ export const getStaticPaths = async () => {
 }
 
 const { post } = Astro.props
-const { Content } = await post.render()
+const { Content, headings } = await post.render()
 ---
 
 <Layout
@@ -22,8 +22,8 @@ const { Content } = await post.render()
   preloadImg={post.data.image}
   ogImg={post.data.image}
 >
-  <div class="p-6 prose mx-auto">
-    <div class="pt-16">
+  <div class="max-w-[1024px] mx-auto pt-24 pb-6 px-6 grid grid-cols-3 gap-10">
+    <div class="prose max-w-full col-span-3 lg:col-span-2">
       <a href="/articles" class="text-lg flex gap-2 items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -53,33 +53,69 @@ const { Content } = await post.render()
       <div class="my-2">
         {format(post.data.pubDate, 'MMM dd, yyyy')}
       </div>
+      <div
+        class="my-4 flex-none w-full aspect-[1200/630] rounded-box bg-base-200 bg-no-repeat bg-center bg-[length:3rem_3rem] overflow-hidden"
+        style="background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIj48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik0xOS41IDE0LjI1di0yLjYyNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1aC0xLjVBMS4xMjUgMS4xMjUgMCAwMTEzLjUgNy4xMjV2LTEuNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1SDguMjVtMCAxMi43NWg3LjVtLTcuNSAzSDEyTTEwLjUgMi4yNUg1LjYyNWMtLjYyMSAwLTEuMTI1LjUwNC0xLjEyNSAxLjEyNXYxNy4yNWMwIC42MjEuNTA0IDEuMTI1IDEuMTI1IDEuMTI1aDEyLjc1Yy42MjEgMCAxLjEyNS0uNTA0IDEuMTI1LTEuMTI1VjExLjI1YTkgOSAwIDAwLTktOXoiIC8+PC9zdmc+Cg==);"
+      >
+        <img
+          src={post.data.image}
+          alt={post.data.slug}
+          class="w-full h-full object-contain m-0"
+          loading="lazy"
+        />
+      </div>
+      <div class="collapse bg-base-200 mt-6 relative md:hidden">
+        <input type="checkbox" />
+        <div class="collapse-title text-xl font-medium flex gap-3 items-center absolute top-0 px-4">
+          目次
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"
+            ></path>
+          </svg>
+        </div>
+        <div class="collapse-content">
+          <ol class="list-none pl-4 pr-6">
+            {
+              headings
+                .filter((h) => h.depth == 2 || h.depth == 3)
+                .map((h) => (
+                  <li class={h.depth == 3 ? 'pl-4' : ''}>
+                    <a href={`#${h.slug}`} class="no-underline hover:underline">
+                      {h.text}
+                    </a>
+                  </li>
+                ))
+            }
+          </ol>
+        </div>
+      </div>
+      <Content />
     </div>
-    <div
-      class="my-4 flex-none w-full aspect-[1200/630] rounded-box bg-base-200 bg-no-repeat bg-center bg-[length:3rem_3rem] overflow-hidden"
-      style="background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIj48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik0xOS41IDE0LjI1di0yLjYyNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1aC0xLjVBMS4xMjUgMS4xMjUgMCAwMTEzLjUgNy4xMjV2LTEuNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1SDguMjVtMCAxMi43NWg3LjVtLTcuNSAzSDEyTTEwLjUgMi4yNUg1LjYyNWMtLjYyMSAwLTEuMTI1LjUwNC0xLjEyNSAxLjEyNXYxNy4yNWMwIC42MjEuNTA0IDEuMTI1IDEuMTI1IDEuMTI1aDEyLjc1Yy42MjEgMCAxLjEyNS0uNTA0IDEuMTI1LTEuMTI1VjExLjI1YTkgOSAwIDAwLTktOXoiIC8+PC9zdmc+Cg==);"
-    >
-      <img
-        src={post.data.image}
-        alt={post.data.slug}
-        class="w-full h-full object-contain m-0"
-        loading="lazy"
-      />
+    <div class="hidden lg:block prose pt-8">
+      <div class="sticky top-0 pt-6">
+        <div class="rounded-box bg-base-200 p-2">
+          <ol class="list-none pl-4 pr-6">
+            {
+              headings
+                .filter((h) => h.depth == 2 || h.depth == 3)
+                .map((h) => (
+                  <li class={h.depth == 3 ? 'pl-4' : ''}>
+                    <a href={`#${h.slug}`} class="no-underline hover:underline">
+                      {h.text}
+                    </a>
+                  </li>
+                ))
+            }
+          </ol>
+        </div>
+      </div>
     </div>
-    <Content />
   </div>
 </Layout>
-
-<style is:global>
-  .toc {
-    @apply rounded-box bg-base-200 mt-8 pl-4 pr-8 py-2;
-  }
-  .toc ol {
-    @apply list-none pl-4;
-  }
-  .toc li {
-    @apply pl-0;
-  }
-  .toc a {
-    @apply no-underline hover:underline;
-  }
-</style>

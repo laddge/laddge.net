@@ -23,7 +23,6 @@
     "date-fns": "^2.30.0",
     "fuse.js": "^6.6.2",
     "jsdom": "^22.1.0",
-    "lazysizes": "^5.3.2",
     "query-string": "^8.1.0",
     "svelte": "^4.2.12",
     "tailwindcss": "^3.3.2",

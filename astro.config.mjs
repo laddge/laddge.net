@@ -92,7 +92,16 @@ const myRemarkPlugin = () => {
 export default defineConfig({
   site: `https://${CNAME.slice(0, CNAME.indexOf('\n'))}`,
   markdown: {
-    remarkPlugins: [rlc, remarkDirective, myRemarkPlugin],
+    remarkPlugins: [
+      [
+        rlc,
+        {
+          shortenUrl: true,
+        },
+      ],
+      remarkDirective,
+      myRemarkPlugin,
+    ],
   },
   integrations: [tailwind(), svelte(), sitemap()],
 })

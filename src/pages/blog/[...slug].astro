@@ -63,7 +63,7 @@ const image = (await getImage({ src: post.data.image })).src
         <img src={image} alt={post.slug} class="w-full h-full object-contain m-0" loading="lazy" />
       </div>
       <div class="collapse bg-base-200 mt-6 relative md:hidden">
-        <input type="checkbox" />
+        <input type="checkbox" aria-label="Table of Contents" />
         <div
           class="collapse-title text-xl font-medium flex gap-3 items-center absolute top-0 px-4 text-base-content"
         >

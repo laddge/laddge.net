@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
 import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
+import critters from 'astro-critters'
 import { h } from 'hastscript'
 import remarkDirective from 'remark-directive'
 import rlc from 'remark-link-card'
@@ -106,7 +107,7 @@ export default defineConfig({
       myRemarkPlugin,
     ],
   },
-  integrations: [tailwind(), svelte(), sitemap()],
+  integrations: [tailwind(), svelte(), sitemap(), critters()],
   image: {
     remotePatterns: [{ protocol: 'https' }],
   },

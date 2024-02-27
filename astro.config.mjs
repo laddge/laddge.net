@@ -91,6 +91,9 @@ const myRemarkPlugin = () => {
 // https://astro.build/config
 export default defineConfig({
   site: `https://${CNAME.slice(0, CNAME.indexOf('\n'))}`,
+  build: {
+    inlineStylesheets: 'always',
+  },
   markdown: {
     remarkPlugins: [
       [

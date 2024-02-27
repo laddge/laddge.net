@@ -2,7 +2,7 @@
 title: ホームページをリニューアルしました！
 tags:
   - Web
-image: '/images/new_site.png'
+image: './images/new_site.png'
 pubDate: 2023-07-10
 ---
 

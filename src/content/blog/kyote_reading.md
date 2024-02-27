@@ -5,7 +5,7 @@ tags:
 - Study
 
 - 大学受験
-image: '/images/kyote_reading.png'
+image: './images/kyote_reading.png'
 pubDate: 2023-11-02
 ---
 

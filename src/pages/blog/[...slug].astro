@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import { format } from 'date-fns'
 
@@ -14,13 +15,15 @@ export const getStaticPaths = async () => {
 
 const { post } = Astro.props
 const { Content, headings } = await post.render()
+
+const image = (await getImage({ src: post.data.image })).src
 ---
 
 <Layout
   title={`${post.data.title} | Laddgeのページ`}
   description={`${format(post.data.pubDate, 'yyyy年M月d日の記事')}`}
-  preloadImg={post.data.image}
-  ogImg={post.data.image}
+  preloadImg={image}
+  ogImg={image}
 >
   <div class="max-w-[1024px] mx-auto pt-24 pb-6 px-6 grid grid-cols-3 gap-10">
     <div class="prose max-w-full col-span-3 lg:col-span-2">
@@ -57,12 +60,7 @@ const { Content, headings } = await post.render()
         class="my-4 flex-none w-full aspect-[1200/630] rounded-box bg-base-200 bg-no-repeat bg-center bg-[length:3rem_3rem] overflow-hidden"
         style="background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIj48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik0xOS41IDE0LjI1di0yLjYyNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1aC0xLjVBMS4xMjUgMS4xMjUgMCAwMTEzLjUgNy4xMjV2LTEuNWEzLjM3NSAzLjM3NSAwIDAwLTMuMzc1LTMuMzc1SDguMjVtMCAxMi43NWg3LjVtLTcuNSAzSDEyTTEwLjUgMi4yNUg1LjYyNWMtLjYyMSAwLTEuMTI1LjUwNC0xLjEyNSAxLjEyNXYxNy4yNWMwIC42MjEuNTA0IDEuMTI1IDEuMTI1IDEuMTI1aDEyLjc1Yy42MjEgMCAxLjEyNS0uNTA0IDEuMTI1LTEuMTI1VjExLjI1YTkgOSAwIDAwLTktOXoiIC8+PC9zdmc+Cg==);"
       >
-        <img
-          src={post.data.image}
-          alt={post.data.slug}
-          class="w-full h-full object-contain m-0"
-          loading="lazy"
-        />
+        <img src={image} alt={post.slug} class="w-full h-full object-contain m-0" loading="lazy" />
       </div>
       <div class="collapse bg-base-200 mt-6 relative md:hidden">
         <input type="checkbox" />

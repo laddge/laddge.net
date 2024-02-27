@@ -1,5 +1,7 @@
 import fs from 'fs'
 
+import type { ImageMetadata } from 'astro'
+import { getImage } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import axios from 'axios'
 import { JSDOM } from 'jsdom'
@@ -10,7 +12,7 @@ export interface Article {
   title: string
   tags: string[]
   pubDate: Date
-  image: string
+  image: string | ImageMetadata
   articleType: number
 }
 
@@ -91,6 +93,13 @@ const fetchData = async () => {
   return articles.sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf())
 }
 
+const optimizeImage = async (articles: Article[]) => {
+  for (const article of articles) {
+    article.image = (await getImage({ src: article.image, inferSize: true })).src
+  }
+  return articles
+}
+
 export const getArticles = async () => {
   try {
     const data = fs.readFileSync('./.articles.json', 'utf-8')
@@ -98,10 +107,10 @@ export const getArticles = async () => {
     for (const article of articles) {
       article.pubDate = new Date(article.pubDate)
     }
-    return articles
+    return await optimizeImage(articles)
   } catch (err) {
     const articles = await fetchData()
     fs.writeFileSync('./.articles.json', JSON.stringify({ articles }))
-    return articles
+    return await optimizeImage(articles)
   }
 }

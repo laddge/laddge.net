@@ -35,7 +35,7 @@ const { title, description, preloadImg, ogImg } = Astro.props
           <meta
             property="og:image"
             content={
-              ogImg.slice(0, 1) == '/'
+              ogImg.startsWith('/')
                 ? `https://${CNAME.slice(0, CNAME.indexOf('\n'))}${ogImg}`
                 : ogImg
             }

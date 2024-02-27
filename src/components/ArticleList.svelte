@@ -32,7 +32,7 @@
                 fill="none"
                 viewBox="-6 0 36 36"
                 stroke-width="2.5"
-                class="inline w-6 h-6 stroke-base-content/75"
+                class="inline w-6 h-6 stroke-base-content/[.8]"
                 ><path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -78,7 +78,7 @@
           {#each article.tags as tag}
             <a
               href={`/articles?tags=${tag}`}
-              class="btn btn-ghost px-1 h-auto min-h-0 normal-case text-base font-normal text-base-content/75"
+              class="btn btn-ghost px-1 h-auto min-h-0 normal-case text-base font-medium text-base-content/[.8] hover:underline"
             >
               #{tag}
             </a>

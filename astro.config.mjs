@@ -104,4 +104,7 @@ export default defineConfig({
     ],
   },
   integrations: [tailwind(), svelte(), sitemap()],
+  image: {
+    remotePatterns: [{ protocol: 'https' }],
+  },
 })

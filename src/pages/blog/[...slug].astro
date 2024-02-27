@@ -137,12 +137,12 @@ const image = (await getImage({ src: post.data.image })).src
     @apply flex gap-2 items-center mt-2;
   }
   .rlc-favicon {
-    @apply m-0 flex-none w-4 h-4;
+    @apply m-0 flex-none w-4 h-4 !important;
   }
   .rlc-url {
     @apply overflow-hidden text-ellipsis;
   }
   .rlc-image {
-    @apply rounded-xl m-0 w-full;
+    @apply rounded-xl m-0 w-full !important;
   }
 </style>

@@ -122,7 +122,7 @@ const image = (await getImage({ src: post.data.image })).src
 
 <style is:global>
   .rlc-container {
-    @apply block rounded-box bg-base-200 w-full p-4 no-underline hover:underline flex items-center mt-4 !important;
+    @apply block rounded-box bg-base-200 w-full p-4 no-underline hover:underline flex mt-4 !important;
   }
   .rlc-info {
     @apply grow;
@@ -143,9 +143,9 @@ const image = (await getImage({ src: post.data.image })).src
     @apply pl-2 overflow-hidden text-ellipsis;
   }
   .rlc-image-container {
-    @apply flex-none pl-4;
+    @apply pl-4 flex-none flex items-center;
   }
   .rlc-image {
-    @apply rounded-xl m-0 h-24 !important;
+    @apply rounded-xl bg-base-300 m-0 h-28 aspect-square object-contain !important;
   }
 </style>

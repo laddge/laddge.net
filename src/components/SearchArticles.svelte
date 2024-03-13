@@ -94,7 +94,7 @@
 </div>
 <div class="tabs tabs-bordered mt-2 mb-4">
   {#each { length: 4 } as _, i}
-    <label class={`grow tab tab-bordered ${tab == i ? 'tab-active' : ''}`}>
+    <label class={`grow tab tab-bordered px-1 ${tab == i ? 'tab-active' : ''}`}>
       <input type="radio" bind:group={tab} name="tab" value={i} class="hidden" />
       {['All', 'Blog', 'Qiita', 'Zenn'][i]}
       <div class="badge badge-sm text-current border-current ml-2">

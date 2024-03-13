@@ -10,8 +10,8 @@ image: './images/make_your_site_1.png'
 
 この記事は3つの記事の1つ目です。
 - ①準備編 (now)
-- [②実践編](./make_your_site_2)
-- [③応用編](./make_your_site_3)
+- [②実践編](/blog/make_your_site_2)
+- [③応用編](/blog/make_your_site_3)
 
 ## はじめに
 春から大学生のみなさん、進学おめでとうございます。
@@ -262,4 +262,4 @@ bun --version
 
 実践編では、いよいよ自分のホームページを作っていきます。
 
-[&gt;&gt;実践編へ](./make_your_site_2)
+[&gt;&gt;実践編へ](/blog/make_your_site_2)

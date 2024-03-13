@@ -9,8 +9,8 @@ image: './images/make_your_site_3.png'
 ---
 
 この記事は3つの記事の3つ目です。
-- [①準備編](./make_your_site_1)
-- [②実践編](./make_your_site_2)
+- [①準備編](/blog/make_your_site_1)
+- [②実践編](/blog/make_your_site_2)
 - ③応用編 (now)
 
 ## 応用編について

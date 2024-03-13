@@ -9,9 +9,9 @@ image: './images/make_your_site_2.png'
 ---
 
 この記事は3つの記事の2つ目です。
-- [①準備編](./make_your_site_1)
+- [①準備編](/blog/make_your_site_1)
 - ②実践編 (now)
-- [③応用編](./make_your_site_3)
+- [③応用編](/blog/make_your_site_3)
 
 ## 実践編について
 ①の準備編では、開発環境を整えました。
@@ -290,4 +290,4 @@ pushできたら、ブラウザでリポジトリのページを開きます。
 
 ということで、応用編では、サイトをもっとカスタマイズする方法を紹介します。
 
-[&gt;&gt;応用編へ](./make_your_site_3)
+[&gt;&gt;応用編へ](/blog/make_your_site_3)

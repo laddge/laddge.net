@@ -55,6 +55,12 @@ const { title, description, preloadImg, ogImg } = Astro.props
     <meta name="twitter:site" content="@laddge_" />
     {preloadImg && <link rel="preload" as="image" href={preloadImg} />}
     <title>{title}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"
+      integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww"
+      crossorigin="anonymous"
+    />
   </head>
   <body class="h-full">
     <div id="navbar" class="navbar bg-base-200 absolute">

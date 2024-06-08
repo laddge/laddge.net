@@ -5,8 +5,10 @@ import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import critters from 'astro-critters'
 import { h } from 'hastscript'
+import rehypeKatex from 'rehype-katex'
 import remarkDirective from 'remark-directive'
 import rlc from 'remark-link-card'
+import remarkMath from 'remark-math'
 import { visit } from 'unist-util-visit'
 
 import CNAME from './public/CNAME?raw'
@@ -101,8 +103,10 @@ export default defineConfig({
         },
       ],
       remarkDirective,
+      remarkMath,
       myRemarkPlugin,
     ],
+    rehypePlugins: [rehypeKatex],
   },
   integrations: [tailwind(), svelte(), sitemap(), critters()],
   image: {

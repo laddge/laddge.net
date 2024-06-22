@@ -19,6 +19,8 @@ const articles = (await getArticles()).slice(0, 6)
     <Picture
       src={backgroundImg}
       formats={['avif', 'webp']}
+      widths={[640, 768, 1024, backgroundImg.width]}
+      sizes={`(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, ${backgroundImg.width}px`}
       alt="background image"
       loading="eager"
       class="absolute object-cover h-full"

@@ -11,9 +11,9 @@ const articles = (await getArticles()).slice(0, 6)
   title="Laddgeのページ"
   description="パソコン好きの学生です。趣味でプログラミングなどをしています。"
 >
-  <div id="hero" class="hero min-h-screen bg-base-200" style={{ minHeight: '100svh' }}>
-    <div class="hero-content text-center">
-      <div class="max-w-md">
+  <div id="hero" class="max-w-[1024px] mx-auto mt-28 px-6">
+    <div class="mockup-window shadow-lg border bg-base-300 w-fit mx-auto">
+      <div class="bg-base-100 text-center p-6">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 64 64"
@@ -36,18 +36,12 @@ const articles = (await getArticles()).slice(0, 6)
             d="M12 46v7h31v1h-3v1h4v-1h1v-1h6v-1h-3v-1h4v-2h-1v-1h-1v2h-2v-1h2v-1h-3v1h-1v3h1v1h-2v-4h-1v-1h-1v4h-2v-3h2v-1h-3v1h-1v3h1v1h-2v-7h-2v5h-1v1h1v1h-1v-1h-1v-3h2v-1h-3v1h-1v3h1v1h-2v-7h-2v5h-1v1h1v1h-1v-1h-1v-3h2v-1h-3v1h-1v3h1v1h-2v-4h-1v-1h-1v3h-1v1h1v1h-1v-1h-1v-3h2v-1h-3v1h-1v3h1v1h-2v-2h-1v1h-2v-6z"
           ></path>
         </svg>
-        <h1 class="text-5xl font-bold">
-          <span class="brightness-150 contrast-150">Linux</span>❤️<br />
-          Do it ...<br />
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"
-            >Dev It Yourself!</span
-          >
-        </h1>
-        <div class="py-6 text-xl">
+        <p class="text-2xl font-bold">どうも、Laddgeです！</p>
+        <div class="py-4 text-lg">
           <p>パソコン好きの学生です。</p>
           <p>趣味でプログラミングなどをしています。</p>
         </div>
-        <a href="/profile" class="btn btn-lg btn-ghost">&gt;&gt;&gt; Profile</a>
+        <a href="/profile" class="btn btn-neutral btn-sm">&gt;&gt;&gt; Profile</a>
       </div>
     </div>
   </div>

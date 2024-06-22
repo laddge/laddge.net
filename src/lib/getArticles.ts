@@ -18,7 +18,7 @@ export interface Article {
 
 const fetchData = async () => {
   const blogEntries = await getCollection('blog', ({ data }) => {
-    return data.draft !== true
+    return data.hidden !== true
   })
   const articles: Article[] = blogEntries.map((entry) => ({
     slug: entry.slug,

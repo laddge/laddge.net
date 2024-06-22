@@ -5,6 +5,8 @@ import { format } from 'date-fns'
 
 import Layout from '@/layouts/Layout.astro'
 
+import 'katex/dist/katex.min.css'
+
 export const getStaticPaths = async () => {
   const posts = await getCollection('blog')
   return posts.map((post) => ({

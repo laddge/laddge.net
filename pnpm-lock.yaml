@@ -35,6 +35,9 @@ dependencies:
   jsdom:
     specifier: ^22.1.0
     version: 22.1.0
+  katex:
+    specifier: ^0.16.10
+    version: 0.16.10
   query-string:
     specifier: ^8.1.0
     version: 8.1.0
@@ -2424,7 +2427,6 @@ packages:
   /commander@8.3.0:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
-    dev: true
 
   /common-ancestor-path@1.0.1:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
@@ -4351,7 +4353,6 @@ packages:
     hasBin: true
     dependencies:
       commander: 8.3.0
-    dev: true
 
   /keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}

@@ -48,7 +48,7 @@ const image = (await getImage({ src: post.data.image })).src
           post.data.tags.map((tag: string) => (
             <a
               href={`/articles?tags=${tag}`}
-              class="btn btn-ghost px-1 h-auto min-h-0 normal-case text-base font-medium text-base-content/[.8] hover:underline"
+              class="btn btn-ghost px-1 h-auto min-h-0 normal-case text-base font-medium text-base-content/[.8] underline decoration-transparent hover:decoration-current transition ease-out"
             >
               #{tag}
             </a>
@@ -89,7 +89,10 @@ const image = (await getImage({ src: post.data.image })).src
                 .filter((h) => h.depth == 2 || h.depth == 3)
                 .map((h) => (
                   <li class={h.depth == 3 ? 'pl-4' : ''}>
-                    <a href={`#${h.slug}`} class="no-underline hover:underline">
+                    <a
+                      href={`#${h.slug}`}
+                      class="underline decoration-transparent hover:decoration-current transition ease-out"
+                    >
                       {h.text}
                     </a>
                   </li>
@@ -109,7 +112,10 @@ const image = (await getImage({ src: post.data.image })).src
                 .filter((h) => h.depth == 2 || h.depth == 3)
                 .map((h) => (
                   <li class={h.depth == 3 ? 'pl-4' : ''}>
-                    <a href={`#${h.slug}`} class="no-underline hover:underline">
+                    <a
+                      href={`#${h.slug}`}
+                      class="underline decoration-transparent hover:decoration-current transition ease-out"
+                    >
                       {h.text}
                     </a>
                   </li>
@@ -124,7 +130,7 @@ const image = (await getImage({ src: post.data.image })).src
 
 <style is:global>
   .rlc-container {
-    @apply rounded-box bg-base-200 w-full p-4 no-underline hover:underline h-36 mt-4 break-words flex !important;
+    @apply rounded-box bg-base-200 w-full p-4 underline decoration-transparent hover:decoration-current transition ease-out h-36 mt-4 break-words flex !important;
   }
   .rlc-info {
     @apply grow h-28 flex flex-col justify-between;

@@ -80,7 +80,7 @@
           {#each article.tags as tag}
             <a
               href={`/articles?tags=${tag}`}
-              class="btn btn-ghost px-1 h-auto min-h-0 normal-case text-base font-medium text-base-content/[.8] hover:underline"
+              class="btn btn-ghost px-1 h-auto min-h-0 normal-case text-base font-medium text-base-content/[.8] underline decoration-transparent hover:decoration-current transition ease-out"
             >
               #{tag}
             </a>

@@ -99,6 +99,7 @@
       #tag
     </button>
     <ul
+      tabindex="-1"
       class="dropdown-content z-[1] menu block sm:flex p-2 border shadow-lg bg-base-100 rounded-box overflow-auto h-[calc(11rem+1px)] w-full mt-2"
     >
       {#each Array.from(new Set([].concat(...allArticles.map((article) => article.tags)))).sort() as tag}

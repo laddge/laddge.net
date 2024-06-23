@@ -124,16 +124,16 @@ const image = (await getImage({ src: post.data.image })).src
 
 <style is:global>
   .rlc-container {
-    @apply block rounded-box bg-base-200 w-full p-4 no-underline hover:underline relative h-36 mt-4 break-words !important;
+    @apply rounded-box bg-base-200 w-full p-4 no-underline hover:underline h-36 mt-4 break-words flex !important;
   }
   .rlc-info {
-    @apply w-[calc(100%-8rem)] h-28 flex flex-col justify-between;
+    @apply grow h-28 flex flex-col justify-between;
   }
   .rlc-title {
     @apply text-xl font-bold line-clamp-1 mb-2;
   }
   .rlc-description {
-    @apply line-clamp-2 text-sm;
+    @apply line-clamp-2 text-sm grow;
   }
   .rlc-url-container {
     @apply flex items-center mt-2;
@@ -145,7 +145,7 @@ const image = (await getImage({ src: post.data.image })).src
     @apply pl-2 line-clamp-1;
   }
   .rlc-image-container {
-    @apply absolute top-4 right-4 flex items-center;
+    @apply flex-none ml-4 flex items-center;
   }
   .rlc-image {
     @apply rounded-xl bg-base-300 m-0 h-28 aspect-square object-contain !important;

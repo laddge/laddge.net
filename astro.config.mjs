@@ -5,7 +5,9 @@ import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import critters from 'astro-critters'
 import { h } from 'hastscript'
+import rehypeExternalLinks from 'rehype-external-links'
 import rehypeKatex from 'rehype-katex'
+import rehypeRaw from 'rehype-raw'
 import remarkDirective from 'remark-directive'
 import rlc from 'remark-link-card'
 import remarkMath from 'remark-math'
@@ -106,7 +108,16 @@ export default defineConfig({
       remarkMath,
       myRemarkPlugin,
     ],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [
+      rehypeRaw,
+      rehypeKatex,
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+        },
+      ],
+    ],
   },
   integrations: [tailwind(), svelte(), sitemap(), critters()],
   image: {

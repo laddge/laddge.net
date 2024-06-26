@@ -64,9 +64,17 @@ ssh-keygen -t rsa -b 4096
 
 ```bash
 scp ~/.ssh/id_rsa.pub {solのユーザー名}@sol.cc.uec.ac.jp:~/.ssh/authorized_keys
+
+# Windowsの場合は以下(6/26追記)
+scp %HOMEPATH%/.ssh/id_rsa.pub {solのユーザー名}@sol.cc.uec.ac.jp:~/.ssh/authorized_keys
 ```
 
 sshするときと同じようにパスワードを聞かれるので、入力してログインしてください。
+
+:::info
+6/26追記:
+初めてsshする場合は、`Are you sure you want to continue connecting (yes/no/[fingerprint])?`と聞かれますが、これには"yes"と答えてエンターを押してください。
+:::
 
 ここまでできたら、とりあえず公開鍵認証の設定は完了です。
 
@@ -74,7 +82,7 @@ sshしてみてください。
 パスワードを聞かれなくなったと思います。
 
 :::warning
-6/24追記：
+6/24追記:
 Twitterにて、「authorized_keysを直接置き換えるべきでない」という指摘をいただきました。
 `authorized_keys`ファイルは公開鍵を列挙しておくファイルなので、本来追記するほうが正しいです。
 今回の記事では初めて公開鍵を登録する場合を想定して書いていますが、今後他の公開鍵を登録する際は、生成された公開鍵ファイルの中身を`authorized_keys`ファイルの末尾に追記するようにしてください。

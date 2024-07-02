@@ -50,7 +50,7 @@ const myRemarkPlugin = () => {
             data: {
               hName: 'div',
               hProperties: {
-                class: `flex gap-4 items-center ${bg[node.name]} ${
+                class: `flex gap-4 items-start ${bg[node.name]} ${
                   text[node.name]
                 } rounded-box px-6 py-2 my-3 ${node.attributes.class || ''}`.trim(),
               },
@@ -61,7 +61,7 @@ const myRemarkPlugin = () => {
                 data: {
                   hName: 'div',
                   hProperties: {
-                    class: 'flex-none',
+                    class: 'flex-none py-6',
                   },
                 },
                 children: [

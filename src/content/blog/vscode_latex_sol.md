@@ -148,8 +148,8 @@ https://www2.yukawa.kyoto-u.ac.jp/~koudai.sugimoto/dokuwiki/doku.php?id=latex:vs
 ```perl
 #!/usr/bin/env perl
  
-$latex = 'platex %O %S';
-$bibtex = 'pbibtex %O %S';
+$latex = 'uplatex %O %S';
+$bibtex = 'upbibtex %O %S';
 $biber = 'biber --bblencoding=utf8 -u -U --output_safechars %O %S';
 $makeindex = 'mendex %O -o %D %S';
 $dvipdf = 'dvipdfmx %O -o %D %S';
@@ -159,6 +159,18 @@ $dvipdf = 'dvipdfmx %O -o %D %S';
 
 ~めんどいので~内容の解説は割愛します。
 調べれば色々情報出てくると思うので、興味があればぜひ。
+
+:::warning
+7/2追記:  
+コンリテの資料では「platex」を使えという指示がありますが、文字コードの関係でUnicodeに対応したuplatexを使うことをおすすめします。
+上のlatexmkrcの設定はuplatexを使用する場合のものに書き換えました。
+
+$\LaTeX$のtexファイル内で`\documentclass`を書くところがある(おそらく最初の行)と思うので、そこを以下のように書き換えてください。
+
+```tex
+\documentclass[uplatex,12pt,a4j]{jsarticle}
+```
+:::
 
 ### LaTeX Workshopを導入
 次に、VSCodeに$\LaTeX$の拡張機能を入れます。

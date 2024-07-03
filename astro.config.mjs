@@ -50,7 +50,7 @@ const myRemarkPlugin = () => {
             data: {
               hName: 'div',
               hProperties: {
-                class: `flex gap-4 items-start ${bg[node.name]} ${
+                class: `flex items-start ${bg[node.name]} ${
                   text[node.name]
                 } rounded-box px-6 py-2 my-3 ${node.attributes.class || ''}`.trim(),
               },
@@ -61,7 +61,7 @@ const myRemarkPlugin = () => {
                 data: {
                   hName: 'div',
                   hProperties: {
-                    class: 'flex-none py-6',
+                    class: 'flex-none py-6 pr-4',
                   },
                 },
                 children: [
@@ -76,7 +76,7 @@ const myRemarkPlugin = () => {
                 data: {
                   hName: 'div',
                   hProperties: {
-                    class: 'grow',
+                    class: 'grow min-w-0',
                   },
                 },
                 children: [...node.children],

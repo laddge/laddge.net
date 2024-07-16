@@ -38,6 +38,11 @@ https://laddge.net/blog/make_your_site_1
 ## sshの設定
 さて、VSCodeでsshする前に、sshをちょっと便利にする設定を紹介します。
 
+:::info
+7/16追記:
+以後コマンドを実行する場面が出てきますが、すべてVSCode内のターミナルで実行するようにしてください。(上のメニューバーからターミナル→新しいターミナルでひらけます。)
+:::
+
 ### 公開鍵認証
 多分みなさんsshするときに毎回パスワードを入力してると思うんですが、それをパスワード認証でなくて公開鍵認証という方式にすることで、毎度パスワードを打つ手間をなくすことができます。
 
@@ -65,8 +70,8 @@ ssh-keygen -t rsa -b 4096
 ```bash
 scp ~/.ssh/id_rsa.pub {solのユーザー名}@sol.cc.uec.ac.jp:~/.ssh/authorized_keys
 
-# Windowsの場合は以下(6/26追記)
-scp %HOMEPATH%/.ssh/id_rsa.pub {solのユーザー名}@sol.cc.uec.ac.jp:~/.ssh/authorized_keys
+# Windowsの場合は以下(7/16修正)
+scp $Env:HOMEPATH/.ssh/id_rsa.pub {solのユーザー名}@sol.cc.uec.ac.jp:~/.ssh/authorized_keys
 ```
 
 sshするときと同じようにパスワードを聞かれるので、入力してログインしてください。

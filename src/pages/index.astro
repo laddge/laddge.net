@@ -8,6 +8,24 @@ import GitHubKusa from '@/components/GitHubKusa.svelte'
 import Layout from '@/layouts/Layout.astro'
 import { getArticles } from '@/lib/getArticles'
 
+const links = [
+  ['かとうのHomePage', 'https://kat0h.com'],
+  ['へる破壊財団', 'https://helkun.dev'],
+  ['ゆいのページ', 'https://yuino.dev'],
+  ['すしのへや', 'https://sushichan.live'],
+  ['つまみネット', 'https://trpfrog.net'],
+  ["y-chan's website", 'https://y-chan.dev'],
+  ['あづみのメモ帳', 'https://azumino.pages.dev'],
+  ['エリンギ@McbeEringi', 'https://mcbeeringi.github.io'],
+  ['はんかくくんのページ', 'https://kqiita.github.io'],
+  ['Ryotaro Onoue', 'https://yumnumm.dev'],
+  ['スターのホームページ', 'https://www.starprivate55.com'],
+  ['MWindows99', 'https://mwindows99.com'],
+  ['プシューわんこ/', 'https://pusyuuwanko.com'],
+  ['JS2FZH', 'https://js2fzh.github.io'],
+]
+links.sort()
+
 const articles = (await getArticles()).slice(0, 6)
 ---
 
@@ -55,7 +73,8 @@ const articles = (await getArticles()).slice(0, 6)
             <p>パソコン好きの学生です。</p>
             <p>
               <span class="inline-block">趣味でプログラミングなどを</span><span class="inline-block"
-                >しています。</span>
+                >しています。</span
+              >
             </p>
           </div>
           <a href="/profile" class="btn btn-neutral btn-sm">&gt;&gt;&gt; Profile</a>
@@ -211,9 +230,50 @@ const articles = (await getArticles()).slice(0, 6)
       </div>
     </div>
   </div>
-  <div class="flex justify-center gap-4">
+  <div class="flex justify-center">
     <div class="rotate-45 w-4 h-4 border-[2.5px] border-current my-6 rounded-sm"></div>
+    <div class="rotate-45 w-4 h-4 mx-4 border-[2.5px] border-current my-6 rounded-sm"></div>
     <div class="rotate-45 w-4 h-4 border-[2.5px] border-current my-6 rounded-sm"></div>
+  </div>
+  <div class="py-20">
+    <div class="max-w-[1024px] mx-auto px-6">
+      <h2
+        class="text-4xl font-bold mb-8 flex items-center gap-1 w-fit px-2 mx-auto bg-[linear-gradient(transparent_60%,_hsl(var(--b2))_60%)] rounded"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="w-8 h-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"
+          ></path>
+        </svg>
+        Links
+      </h2>
+      <p class="mb-4 text-center">知り合いのサイト等へのリンク</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {
+          links.map((link) => (
+            <a href={link[1]} target="_blank" class="hover:underline">
+              <div class="p-5 bg-base-200 rounded-box flex flex-col justify-between break-all">
+                <div class="text-xl font-bold">{link[0]}</div>
+                <div class="text-base-content/80">{link[1]}</div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <div class="rotate-45 w-4 h-4 border-[2.5px] border-current my-6 rounded-sm"></div>
+    <div class="rotate-45 w-4 h-4 mx-4 border-[2.5px] border-current my-6 rounded-sm"></div>
     <div class="rotate-45 w-4 h-4 border-[2.5px] border-current my-6 rounded-sm"></div>
   </div>
   <div class="py-20">

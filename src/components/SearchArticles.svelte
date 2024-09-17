@@ -21,7 +21,7 @@
   $: {
     if (typeof window !== 'undefined') {
       if (!qsLoaded) {
-        const parsed = queryString.parse(window.location.search)
+        const parsed = queryString.parse(window.location.search, { arrayFormat: 'comma' })
         qsLoaded = true
         tab = Number(parsed.tab)
         if (parsed.tags) {
@@ -33,10 +33,13 @@
       if (!Number.isInteger(tab) || tab < 0 || tab >= 4) {
         tab = 0
       }
-      const url = queryString.parseUrl(window.location.href, { parseFragmentIdentifier: true })
+      const url = queryString.parseUrl(window.location.href, {
+        parseFragmentIdentifier: true,
+        arrayFormat: 'comma',
+      })
       url.query.tab = `${tab}`
       url.query.tags = tags
-      window.history.pushState({}, '', queryString.stringifyUrl(url))
+      window.history.pushState({}, '', queryString.stringifyUrl(url, { arrayFormat: 'comma' }))
       if (query) {
         articles = fuse.search(query).map((item) => item.item)
       } else {

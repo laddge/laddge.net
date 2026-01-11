@@ -8,9 +8,20 @@ import '../styles/global.css'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Laddgeのページ</title>
 	</head>
 	<body>
-    <slot />
+    <header class="p-2 bg-base-100/80 backdrop-blur sticky top-0 z-50">
+      <a href="/" class="btn btn-ghost text-xl font-bold flex items-center w-fit p-1 h-auto">
+        <img src="/laddge.min.png" alt="Laddge" class="h-8 w-8 rounded-full" />
+        <h1 class="mx-1">Laddgeのページ</h1>
+      </a>
+    </header>
+    <main class="p-4 container mx-auto">
+      <slot />
+    </main>
+    <footer class="text-sm text-center p-4">
+      &copy; 2026 Laddge
+    </footer>
 	</body>
 </html>

@@ -3,9 +3,53 @@ import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout>
-  <div class="card bg-base-200">
-    <div class="card-body">
-      <img src="/laddge.min.png" alt="Laddge" class="w-32 h-32 mx-auto" style="image-rendering: pixelated;" />
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="card bg-base-200 border-2 border-base-300 outline-2 outline-base-300 -outline-offset-8 outline-dashed">
+      <div class="card-body">
+        <img src="/laddge.min.png" alt="Laddge" class="w-32 h-32 mx-auto" style="image-rendering: pixelated;" />
+        <ul class="mt-2 list-disc">
+          <li>名前</li>
+          <ul>
+            <li>Laddge (らっじ) /<br />髙橋 朋希 (Takahashi Tomoki)</li>
+          </ul>
+          <li>誕生日:</li>
+          <ul>
+            <li>2004-06-28</li>
+          </ul>
+          <li>出身地:</li>
+          <ul>
+            <li>長野</li>
+          </ul>
+          <li>所属:</li>
+          <ul class="list-disc">
+            <li>調布にある国立大学</li>
+            <li><a href="//ueckoken.club" target="_blank" class="underline">工学研究部</a></li>
+            <li><a href="//vll.jp" target="_blank" class="underline">バーチャルライブ研究会</a></li>
+          </ul>
+          <li>趣味:</li>
+          <ul>
+            <li>web開発 / 電子工作 / 3Dプリンター / 自転車 / スキー / 睡眠</li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="card bg-base-200">
+        <div class="card-body">
+          nyanko
+        </div>
+      </div>
     </div>
   </div>
 </Layout>
+
+<style>
+  @reference "tailwindcss";
+
+  ul {
+    @apply pl-4;
+    ul {
+      @apply pb-2;
+    }
+  }
+</style>

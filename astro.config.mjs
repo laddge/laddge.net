@@ -11,6 +11,9 @@ export default defineConfig({
   server: {
     allowedHosts: true,
   },
+  build: {
+    assets: 'assets',
+  },
   vite: {
     plugins: [tailwindcss(), cname(CNAME)],
   },

@@ -13,5 +13,8 @@
     "astro": "^5.16.8",
     "daisyui": "^5.5.14",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "vite-plugin-cname": "^0.1.2"
   }
 }

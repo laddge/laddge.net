@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@iconify-json/fa7-brands": "^1.2.1",
     "@iconify-json/lucide": "^1.2.84",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.8",

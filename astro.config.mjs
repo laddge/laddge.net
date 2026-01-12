@@ -1,13 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
-import cname from 'vite-plugin-cname'
 import icon from 'astro-icon'
-const CNAME = 'laddge.net'
 
 // https://astro.build/config
 export default defineConfig({
-  site: `https://${CNAME}`,
+  site: `https://laddge.net`,
   server: {
     allowedHosts: true,
   },
@@ -15,7 +13,7 @@ export default defineConfig({
     assets: 'assets',
   },
   vite: {
-    plugins: [tailwindcss(), cname(CNAME)],
+    plugins: [tailwindcss()],
   },
   integrations: [icon()],
 })

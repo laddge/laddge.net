@@ -8,8 +8,8 @@ interface Props {
 const { id } = Astro.props
 ---
 
-<div class="relative overflow-hidden rounded">
-  <div tabindex="0" role="button" class="btn btn-ghost cursor-pointer">
+<div class="relative overflow-hidden rounded focus-within:outline-2">
+  <div class="btn btn-ghost cursor-pointer">
     <div class="hidden dark:block theme-light:hidden theme-dark:block">
       <Icon name="lucide:moon" size="20" />
     </div>

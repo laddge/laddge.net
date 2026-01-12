@@ -1,25 +1,84 @@
 ---
 import { Icon } from 'astro-icon/components'
-
-interface Props {
-  id: string
-}
-
-const { id } = Astro.props
 ---
 
-<div class="relative overflow-hidden rounded focus-within:outline-2">
-  <div class="btn btn-ghost cursor-pointer">
+<script>
+  function themeChange(e) {
+    if (e.target.checked) {
+      const { value } = e.target
+      localStorage.setItem('theme', value)
+      if (value) {
+        document.documentElement.dataset.theme = value
+      } else {
+        delete document.documentElement.dataset.theme
+      }
+    }
+  }
+
+  Array.from(document.querySelectorAll('input[name=theme]')).map(el => {
+    const theme = document.documentElement.dataset.theme
+    if (el.value === theme || !(el.value || theme)) el.checked = true
+    el.addEventListener('change', themeChange)
+  })
+</script>
+
+<div class="dropdown dropdown-bottom dropdown-end">
+  <div tabindex="0" role="button" class="btn btn-ghost cursor-pointer p-2">
     <div class="hidden dark:block theme-light:hidden theme-dark:block">
       <Icon name="lucide:moon" size="20" />
     </div>
     <div class="block dark:hidden theme-light:block theme-dark:hidden">
       <Icon name="lucide:sun" size="20" />
     </div>
-    <select id={id} class="opacity-0 absolute top-0 left-0 right-0 bottom-0 cursor-pointer">
-      <option value="">System</option>
-      <option value="dark">Dark</option>
-      <option value="light">Light</option>
-    </select>
   </div>
+  <ul tabindex="-1" class="dropdown-content menu bg-base-300 rounded-box z-1 w-52 p-2 shadow-sm">
+    <li class="menu-title">Theme</li>
+    <li>
+      <input type="radio" id="theme0" name="theme" value="" class="absolute w-0 opacity-0" />
+      <label for="theme0" class="flex items-center">
+        <div class="grow flex items-center">
+          <div class="hidden dark:block">
+            <Icon name="lucide:moon" size="16" />
+          </div>
+          <div class="block dark:hidden">
+            <Icon name="lucide:sun" size="16" />
+          </div>
+          <div class="ml-2">System</div>
+        </div>
+        <div class="hidden"><Icon name="lucide:check" size="16" /></div>
+      </label>
+    </li>
+    <li>
+      <input type="radio" id="theme1" name="theme" value="dark" class="absolute w-0 opacity-0" />
+      <label for="theme1" class="flex items-center">
+        <div class="grow flex items-center">
+          <Icon name="lucide:moon" size="16" />
+          <div class="ml-2">Dark</div>
+        </div>
+        <div class="hidden"><Icon name="lucide:check" size="16" /></div>
+      </label>
+    </li>
+    <li>
+      <input type="radio" id="theme2" name="theme" value="light" class="absolute w-0 opacity-0" />
+      <label for="theme2" class="flex items-center">
+        <div class="grow flex items-center">
+          <Icon name="lucide:sun" size="16" />
+          <div class="ml-2">Light</div>
+        </div>
+        <div class="hidden"><Icon name="lucide:check" size="16" /></div>
+      </label>
+    </li>
+  </ul>
 </div>
+
+<style>
+  @reference "tailwindcss";
+
+  input[type=radio]:focus-visible+label {
+    @apply ring-2;
+  }
+
+  input[type=radio]:checked+label>.hidden {
+    @apply block;
+  }
+</style>

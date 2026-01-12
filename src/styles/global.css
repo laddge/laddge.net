@@ -1,5 +1,10 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+@custom-variant theme-dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant theme-light (&:where([data-theme=light], [data-theme=light] *));
 
 html, body {
   height: 100%;

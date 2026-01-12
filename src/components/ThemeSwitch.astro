@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components'
+
+interface Props {
+  id: string
+}
+
+const { id } = Astro.props
+---
+
+<div class="relative overflow-hidden rounded">
+  <div tabindex="0" role="button" class="btn btn-ghost cursor-pointer">
+    <div class="hidden dark:block theme-light:hidden theme-dark:block">
+      <Icon name="lucide:moon" size="20" />
+    </div>
+    <div class="block dark:hidden theme-light:block theme-dark:hidden">
+      <Icon name="lucide:sun" size="20" />
+    </div>
+    <select id={id} class="opacity-0 absolute top-0 left-0 right-0 bottom-0 cursor-pointer">
+      <option value="">System</option>
+      <option value="dark">Dark</option>
+      <option value="light">Light</option>
+    </select>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import ThemeSwitch from '../components/ThemeSwitch.astro'
 ---
 
 <html lang="ja">
@@ -15,13 +16,15 @@ import '../styles/global.css'
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@laddge_" />
 		<title>Laddgeのページ</title>
+    <script is:inline>((d,s,k)=>((h,l,a)=>(f=>{l.value=f(s.getItem(k)||'');l.addEventListener('change',e=>s.setItem(k,f(e.target.value)))})(v=>(v?h.setAttribute(a,v):h.removeAttribute(a))||v))(d.documentElement,d.getElementById(k),'data-'+k))(document,localStorage,'theme')</script>
 	</head>
 	<body>
-    <header class="p-2 bg-base-100/80 backdrop-blur sticky top-0 z-50">
+    <header class="p-2 bg-base-100/80 backdrop-blur sticky top-0 z-50 w-full flex justify-between items-center">
       <a href="/" class="btn btn-ghost text-xl font-bold flex items-center w-fit p-1 h-auto">
         <img src="/laddge.min.png" alt="Laddge" class="h-8 w-8 rounded-full" />
         <h1 class="mx-1">Laddgeのページ</h1>
       </a>
+      <ThemeSwitch id="theme" />
     </header>
     <main class="p-4 container mx-auto">
       <slot />

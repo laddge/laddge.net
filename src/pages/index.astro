@@ -8,28 +8,28 @@ import { Icon } from 'astro-icon/components'
     <div class="card bg-base-200 border-2 border-base-300 outline-2 outline-base-300 -outline-offset-8 outline-dashed transition-none">
       <div class="card-body">
         <img src="/laddge.min.png" alt="Laddge" class="w-32 h-32 mx-auto" style="image-rendering: pixelated;" />
-        <ul class="mt-2 list-disc leading-6">
+        <ul class="mt-2 list-disc leading-6 pl-4">
           <li>
             名前
-            <ul>
+            <ul class="pl-4 pb-2">
               <li>Laddge (らっじ) /<br />髙橋 朋希 (Takahashi Tomoki)</li>
             </ul>
           </li>
           <li>
             誕生日
-            <ul>
+            <ul class="pl-4 pb-2">
               <li>2004-06-28</li>
             </ul>
           </li>
           <li>
             出身地
-            <ul>
+            <ul class="pl-4 pb-2">
               <li>長野</li>
             </ul>
           </li>
           <li>
             所属
-            <ul class="list-disc">
+            <ul class="list-disc pl-4 pb-2">
               <li>調布にある国立大学</li>
               <li><a href="//ueckoken.club" target="_blank" class="underline">工学研究部</a></li>
               <li><a href="//vll.jp" target="_blank" class="underline">バーチャルライブ研究会</a></li>
@@ -37,7 +37,7 @@ import { Icon } from 'astro-icon/components'
           </li>
           <li>
             趣味
-            <ul>
+            <ul class="pl-4 pb-2">
               <li>web開発 / 電子工作 / 3Dプリンター / 自転車 / スキー / 睡眠</li>
             </ul>
           </li>
@@ -61,14 +61,3 @@ import { Icon } from 'astro-icon/components'
     </div>
   </div>
 </Layout>
-
-<style>
-  @reference "tailwindcss";
-
-  ul {
-    @apply pl-4;
-    ul {
-      @apply pb-2;
-    }
-  }
-</style>

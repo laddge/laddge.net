@@ -1,6 +1,9 @@
 export default {
   plugins: {
     '@tailwindcss/postcss': {},
-    'cssnano': {},
+    autoprefixer: {},
+    cssnano: {
+      preset: ['default', { discardComments: { removeAll: true } }],
+    },
   },
 }

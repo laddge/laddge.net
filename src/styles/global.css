@@ -5,12 +5,3 @@
 
 @custom-variant theme-dark (&:where([data-theme=dark], [data-theme=dark] *));
 @custom-variant theme-light (&:where([data-theme=light], [data-theme=light] *));
-
-html, body {
-  height: 100%;
-}
-footer {
-  position: sticky;
-  top: 100vh;
-  top: 100dvh;
-}

@@ -16,19 +16,23 @@ const { type } = await prompts([{
   ],
 }])
 
+if (type === undefined) throw TypeError('type is undefined')
+
 const basePath = path.join(import.meta.dirname, `../src/content/${type}`)
 
 const { slug } = await prompts([{
   type: 'text',
   name: 'slug',
   message: 'Slug?',
-  initial: format(date, 'yyyyMMdd'),
+  initial: 'some-title',
   validate: async slug => {
-    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) return false
-    if (await Bun.file(path.join(basePath, `${slug}/index.mdx`)).exists()) return false
+    if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) return 'Invalid format!'
+    if (await Bun.file(path.join(basePath, `${slug}/index.mdx`)).exists()) return 'Slug exists!'
     return true
   },
 }])
+
+if (slug === undefined) throw TypeError('slug is undefined')
 
 const questions: PromptObject[] = [
   {

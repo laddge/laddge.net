@@ -1,6 +1,15 @@
 ---
 import '../styles/global.css'
 import ThemeSwitch from '../components/ThemeSwitch.astro'
+
+interface Props {
+  title: string
+  description?: string
+  ogImage?: string
+}
+
+const { title, description = '', ogImage } = Astro.props
+const baseTitle = 'Laddgeのページ'
 ---
 
 <html lang="ja">
@@ -9,20 +18,25 @@ import ThemeSwitch from '../components/ThemeSwitch.astro'
     <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon-180x180.png" />
     <link rel="icon" type="image/png" href="/icon-192x192.png" />
 		<meta name="viewport" content="width=device-width" />
-    <meta name="description" content="ものづくり学生の個人サイト" />
-    <meta property="og:title" content="Laddgeのページ" />
-    <meta property="og:description" content="ものづくり学生の個人サイト" />
-    <meta property="og:image" content="https://github.com/laddge.png" />
-		<meta name="twitter:card" content="summary" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title ? `${title} | ${baseTitle}` : baseTitle} />
+    <meta property="og:description" content={description}/>
+    {ogImage ? <>
+    <meta property="og:image" content={(new URL(Astro.site, ogImage)).href} />
+      <meta name="twitter:card" content="summary_large_image" />
+    </> : <>
+      <meta property="og:image" content="https://github.com/laddge.png" />
+      <meta name="twitter:card" content="summary" />
+    </>}
 		<meta name="twitter:site" content="@laddge_" />
-		<title>Laddgeのページ</title>
+		<title>{title ? `${title} | ${baseTitle}` : baseTitle}</title>
     <script is:inline>(k=>(v=>v&&(document.documentElement.dataset[k]=v))(localStorage.getItem(k)))('theme')</script>
 	</head>
 	<body>
     <header class="p-2 bg-base-100/80 backdrop-blur sticky top-0 z-50 w-full flex justify-between items-center">
       <a href="/" class="btn btn-ghost text-xl font-bold flex items-center w-fit p-1 h-auto">
         <img src="/laddge.min.png" alt="Laddge" class="h-8 w-8 rounded-full" />
-        <h1 class="mx-1">Laddgeのページ</h1>
+        <h1 class="mx-1">{baseTitle}</h1>
       </a>
       <ThemeSwitch />
     </header>

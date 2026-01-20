@@ -1,3 +1,4 @@
+import fs from 'node:fs'
 import path from 'node:path'
 import prompts from 'prompts'
 import type { PromptObject } from 'prompts'
@@ -14,9 +15,7 @@ const { type } = await prompts([{
     { title: 'Blog', value: 'blog' },
     { title: 'Works', value: 'works' },
   ],
-}])
-
-if (type === undefined) throw TypeError('type is undefined')
+}], { onCancel: () => { throw Error('Canceled') } })
 
 const basePath = path.join(import.meta.dirname, `../src/content/${type}`)
 
@@ -25,14 +24,16 @@ const { slug } = await prompts([{
   name: 'slug',
   message: 'Slug?',
   initial: 'some-title',
-  validate: async slug => {
+  validate: slug => {
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) return 'Invalid format!'
-    if (await Bun.file(path.join(basePath, `${slug}/index.mdx`)).exists()) return 'Slug exists!'
-    return true
+    try {
+      fs.accessSync(path.join(basePath, slug), fs.constants.F_OK)
+    } catch {
+      return true
+    }
+    return 'Slug exists!'
   },
-}])
-
-if (slug === undefined) throw TypeError('slug is undefined')
+}], { onCancel: () => { throw Error('Canceled') } })
 
 const questions: PromptObject[] = [
   {
@@ -60,7 +61,9 @@ const questions: PromptObject[] = [
   },
 ]
 
-const res = await prompts(questions)
+const res = await prompts(questions, { onCancel: () => { throw Error('Canceled') } })
+
+fs.cpSync(path.join(basePath, '_template'), path.join(basePath, slug), { recursive: true });
 
 const template = handlebars.compile(await Bun.file(path.join(basePath, '_template/index.mdx')).text())
 

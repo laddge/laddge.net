@@ -20,10 +20,11 @@ export const collections = {
       pattern: '**\/[^_]*\/[^_]*.{md,mdx}',
       base: './src/content/works',
     }),
-    schema: z.object({
+    schema: ({ image }) => z.object({
       title: z.string(),
       description: z.string().nullish(),
       tags: z.array(z.string()).nullish(),
+      thumbnail: image(),
       publishDate: z.date(),
     }),
   }),

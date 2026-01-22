@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from 'astro:content'
+import { Picture, getImage } from 'astro:assets'
+import Layout from '../../layouts/Layout.astro'
+import { format } from 'date-fns'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('works')
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+const thumbnailImg = (await getImage({ src: post.data.thumbnail })).src
+---
+
+<Layout title={post.data.title} description={post.data.description}, ogImage={thumbnailImg}>
+  <div class="prose prose-stone max-w-4xl mx-auto md:pt-8">
+    <div class="not-prose">
+    <Picture src={post.data.thumbnail} formats={['avif', 'webp']} width={800} loading="eager" alt={post.data.title} class="aspect-1200/630 rounded-box mb-2" />
+    </div>
+    <p class="text-lg font-bold text-base-content/50 mb-2">{format(post.data.publishDate, 'yyyy-MM-dd')}</p>
+    <h1 class="mb-4 text-[1.75rem]">{post.data.title}</h1>
+    <p class="mb-1">{post.data.description}</p>
+    {post.data.tags && (
+      <div class="flex flex-wrap justify-end pb-4">
+        {post.data.tags.map(tag => (
+          <div class="mx-1"><a href={`/works/tags/${tag}`}>#{tag}</a></div>
+        ))}
+      </div>
+    )}
+    <hr class="mt-4" />
+    <Content />
+  </div>
+</Layout>

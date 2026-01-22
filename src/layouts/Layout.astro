@@ -22,7 +22,7 @@ const baseTitle = 'Laddgeのページ'
     <meta property="og:title" content={title ? `${title} | ${baseTitle}` : baseTitle} />
     <meta property="og:description" content={description}/>
     {ogImage ? <>
-    <meta property="og:image" content={(new URL(Astro.site, ogImage)).href} />
+    <meta property="og:image" content={(new URL(ogImage, Astro.site)).href} />
       <meta name="twitter:card" content="summary_large_image" />
     </> : <>
       <meta property="og:image" content="https://github.com/laddge.png" />

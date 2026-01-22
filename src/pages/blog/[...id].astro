@@ -20,12 +20,14 @@ const { Content } = await render(post)
     <p class="text-lg font-bold text-base-content/50 md:mt-8 mb-2">{format(post.data.publishDate, 'yyyy-MM-dd')}</p>
     <h1 class="mb-4 text-[1.75rem]">{post.data.title}</h1>
     <p class="mb-2">{post.data.description}</p>
-    <div class="flex flex-wrap">
-      {post.data.tags.map(tag => (
-        <div class="mx-1"><a href={`/blog/tags/${tag}`}>#{tag}</a></div>
-      ))}
-    </div>
-    <hr class="mt-8" />
+    {post.data.tags && (
+      <div class="flex flex-wrap pb-4">
+        {post.data.tags.map(tag => (
+          <div class="mx-1"><a href={`/blog/tags/${tag}`}>#{tag}</a></div>
+        ))}
+      </div>
+    )}
+    <hr class="mt-4" />
     <Content />
   </div>
 </Layout>

@@ -6,6 +6,7 @@
     "@iconify-json/fa7-brands": "^1.2.1",
     "@iconify-json/lucide": "^1.2.84",
     "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/typography": "^0.5.19",
     "astro": "^5.16.8",
     "astro-icon": "^1.1.5",
     "autoprefixer": "^10.4.23",

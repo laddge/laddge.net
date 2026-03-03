@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import ThemeSwitch from '../components/ThemeSwitch.astro'
+import LaddgePng from '../assets/images/laddge.min.png'
 
 interface Props {
   title: string
@@ -36,7 +37,7 @@ const baseTitle = 'Laddgeのページ'
 	<body>
     <header class="p-2 bg-base-100/80 backdrop-blur sticky top-0 z-50 w-full flex justify-between items-center">
       <a href="/" class="btn btn-ghost text-xl font-bold flex items-center w-fit p-1 h-auto">
-        <img src="/laddge.min.png" alt="Laddge" class="h-8 w-8 rounded-full" />
+        <img src={LaddgePng} alt="Laddge" class="h-8 w-8 rounded-full" />
         <h1 class="mx-1">{baseTitle}</h1>
       </a>
       <ThemeSwitch />

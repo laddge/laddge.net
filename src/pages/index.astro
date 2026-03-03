@@ -1,13 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
+import LaddgePng from '../assets/images/laddge.min.png'
 ---
 
 <Layout title="" description="ものづくり学生の個人サイト">
   <div class="grid md:grid-cols-3 gap-4">
     <div class="card bg-base-200 border-2 border-base-300 outline-2 outline-base-300 -outline-offset-8 outline-dashed transition-none">
       <div class="card-body">
-        <img src="/laddge.min.png" alt="Laddge" class="w-32 h-32 mx-auto" style="image-rendering: pixelated;" />
+        <img src={LaddgePng} alt="Laddge" class="w-32 h-32 mx-auto" style="image-rendering: pixelated;" />
         <ul class="mt-2 list-disc leading-6 pl-4">
           <li>
             名前

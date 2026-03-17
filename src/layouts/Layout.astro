@@ -34,7 +34,7 @@ const baseTitle = 'Laddgeのページ'
 		<title>{title ? `${title} | ${baseTitle}` : baseTitle}</title>
     <script is:inline>(k=>(v=>v&&(document.documentElement.dataset[k]=v))(localStorage.getItem(k)))('theme')</script>
 	</head>
-	<body>
+	<body class="flex flex-col">
     <header class="p-2 bg-base-100/80 backdrop-blur sticky top-0 z-50 w-full flex justify-between items-center">
       <a href="/" class="btn btn-ghost text-xl font-bold flex items-center w-fit p-1 h-auto">
         <img src={LaddgePng.src} alt="Laddge" class="h-8 w-8 rounded-full" />
@@ -42,7 +42,7 @@ const baseTitle = 'Laddgeのページ'
       </a>
       <ThemeSwitch />
     </header>
-    <main class="p-4 container mx-auto">
+    <main class="grow p-4 container mx-auto">
       <slot />
     </main>
     <footer class="text-sm text-center p-4">
@@ -52,12 +52,8 @@ const baseTitle = 'Laddgeのページ'
 </html>
 
 <style is:global>
-  html, body {
-    height: 100%;
-  }
-  footer {
-    position: sticky;
-    top: 100vh;
-    top: 100dvh;
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 </style>

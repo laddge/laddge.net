@@ -3,7 +3,8 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <script>
-  function themeChange(e) {
+  function themeChange(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) return
     if (e.target.checked) {
       const { value } = e.target
       localStorage.setItem('theme', value)
@@ -15,7 +16,7 @@ import { Icon } from 'astro-icon/components'
     }
   }
 
-  Array.from(document.querySelectorAll('input[name=theme]')).map(el => {
+  Array.from(document.querySelectorAll<HTMLInputElement>('input[name=theme]')).map(el => {
     const theme = document.documentElement.dataset.theme
     if (el.value === theme || !(el.value || theme)) el.checked = true
     el.addEventListener('change', themeChange)

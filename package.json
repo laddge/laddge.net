@@ -23,7 +23,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "new": "bun run scripts/new.ts"
+    "post": "bun run scripts/post.ts"
   },
   "type": "module",
   "devDependencies": {

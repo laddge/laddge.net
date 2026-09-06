@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config'
 import icon from 'astro-icon'
 import AutoImport from 'astro-auto-import'
 import mdx from '@astrojs/mdx'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,4 +22,7 @@ export default defineConfig({
     }),
     mdx(),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 })

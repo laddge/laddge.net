@@ -28,7 +28,7 @@ export default defineConfig({
         media_folder: '/public/images',
         collections: [
           {
-            name: 'posts',
+            name: 'blog',
             folder: 'src/content/blog',
             path: '{{fields.slug}}/index',
             media_folder: '',

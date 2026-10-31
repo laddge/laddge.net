@@ -24,16 +24,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "post": "bun run scripts/post.ts"
+    "astro": "astro"
   },
   "type": "module",
   "devDependencies": {
     "@types/bun": "^1.3.13",
-    "@types/handlebars": "^4.1.0",
-    "@types/prompts": "^2.4.9",
-    "handlebars": "^4.7.8",
-    "prompts": "^2.4.2",
     "wrangler": "^4.87.0"
   }
 }

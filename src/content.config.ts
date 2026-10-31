@@ -10,6 +10,7 @@ export const collections = {
     }),
     schema: z.object({
       title: z.string(),
+      slug: z.string().nullish(),
       description: z.string().nullish().transform(val => val ?? ''),
       tags: z.array(z.string()).nullish(),
       publishDate: z.date(),

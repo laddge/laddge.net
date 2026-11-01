@@ -2,10 +2,79 @@
 import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
 import LaddgePng from '@/assets/images/laddge.min.png'
+import { format } from 'date-fns'
+import { getCollection } from 'astro:content';
+
+const links: { href: string, title: string, description: string }[] = [
+  {
+    href: 'https://tools.laddge.net',
+    title: 'Laddge Tools',
+    description: '自分用便利ツール',
+  },
+  {
+    href: 'https://2023.laddge.net',
+    title: 'Laddgeのページ(旧)',
+    description: '2023年に作った過去のページ',
+  },
+  {
+    href: 'https://6ca.me',
+    title: 'エリンギ@McbeEringi',
+    description: '工研の先輩 諸悪の根源',
+  },
+  {
+    href: 'https://dg7.dev',
+    title: 'あづみのメモ帳',
+    description: '工研の先輩 Aマウント',
+  },
+  {
+    href: 'https://yuino.dev',
+    title: 'ゆいのページ',
+    description: '工研の先輩 勤務先の先輩でもあるらしい',
+  },
+  {
+    href: 'https://k1h.dev',
+    title: 'VOID',
+    description: '工研の先輩 Kubanetes PLARAIL',
+  },
+  {
+    href: 'https://kqiita.github.io',
+    title: 'はんかくくんのページ',
+    description: '工研の先輩 かわいい',
+  },
+  {
+    href: 'https://helkun.dev',
+    title: 'へる破壊財団',
+    description: '工研の先輩 自分が入部したときの部長',
+  },
+  {
+    href: 'https://y-chan.dev',
+    title: 'y-chan\'s website',
+    description: '工研の先輩 かわいい',
+  },
+  {
+    href: 'https://lnln.dev',
+    title: 'りんりん',
+    description: '工研の先輩 なかがわ電機サービス',
+  },
+  {
+    href: 'https://www.starprivate55.com/',
+    title: 'スターのホームページ',
+    description: 'ネットのお友達',
+  },
+  {
+    href: 'https://yumnumm.dev/',
+    title: 'もぐもぐ',
+    description: 'ネットのお友達？',
+  },
+]
+
+const blog = (await getCollection('blog')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
 ---
 
 <Layout title="" description="ものづくり学生の個人サイト">
-  <div class="grid md:grid-cols-3 gap-4">
+  <div class="grid md:grid-cols-3 gap-4 items-start">
     <div class="card bg-base-200 border-2 border-base-300 outline-2 outline-base-300 -outline-offset-8 outline-dashed transition-none">
       <div class="card-body">
         <img src={LaddgePng.src} alt="Laddge" class="w-32 h-32 mx-auto" style="image-rendering: pixelated;" />
@@ -34,12 +103,13 @@ import LaddgePng from '@/assets/images/laddge.min.png'
               <li>調布にある国立大学</li>
               <li><a href="//ueckoken.club" target="_blank" class="underline">工学研究部</a></li>
               <li><a href="//vll.jp" target="_blank" class="underline">バーチャルライブ研究会</a></li>
+              <li><a href="//www.uecac.club.uec.ac.jp" target="_blank" class="underline">自動車部</a></li>
             </ul>
           </li>
           <li>
             趣味
             <ul class="pl-4 pb-2">
-              <li>web開発 / 電子工作 / 3Dプリンター / 自転車 / スキー / 睡眠</li>
+              <li>電子工作 / 車 / web開発 / 3Dプリンター / 自転車 / スキー / 睡眠</li>
             </ul>
           </li>
         </ul>
@@ -50,13 +120,34 @@ import LaddgePng from '@/assets/images/laddge.min.png'
         </div>
       </div>
     </div>
-    <div class="md:col-span-2">
-      <div class="card bg-base-200">
+    <div class="md:col-span-2 grid items-start gap-4">
+      <div class="card bg-base-200 border-2 border-base-300 outline-2 outline-base-300 -outline-offset-8 outline-dashed transition-none">
         <div class="card-body">
-          <div class="flex flex-col items-center gap-2 mt-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 1024 1024"><!-- Icon from WebHostingHub Glyphs by WebHostingHub - https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL --><path fill="currentColor" d="M960 640V384h64v256zm-64-320h64v64h-64zm-64-64h-64v-64h-64v-64h128V64h128v128h-64v128h-64zM640 64h64v64h-64zm-64 128H384v-64h192zm64 64h-64v-64h64zm64 64h64v64h-64v64h-64v64h-64v64h-64v64h-64v64h-64v64h-64v64h-64v64h-64v128H0V832h128v-64h64v-64h64v-64h64v-64h64v-64h64v-64h64v-64h64v-64h64v-64h64zM128 896H64v64h64zm704-448h-64v-64h64zm64 192h-64V448h64zm64 64h-64v-64h64zM320 128V64h64v64zM384 0h256v64H384z"/></svg>
-            工事中
+          <h2 class="text-lg flex items-center mb-1"><Icon name="lucide:link" class="mr-2" />リンク集</h2>
+          <div class="grid grid-cols-2 gap-3">
+            {links.map(link => (
+              <div class="bg-base-300 rounded-md overflow-hidden grid">
+                <a href={link.href} target="_blank" class="block group px-4 py-3">
+                  <p class="font-bold group-hover:underline">{link.title}</p>
+                  <p class="px-1">{link.description}</p>
+                </a>
+              </div>
+            ))}
           </div>
+        </div>
+      </div>
+      <div class="card bg-base-200 border-2 border-base-300 outline-2 outline-base-300 -outline-offset-8 outline-dashed transition-none">
+        <div class="card-body">
+          <h2 class="text-lg flex items-center mb-1"><Icon name="lucide:newspaper" class="mr-2" />最近の記事</h2>
+          <ul class="list-disc list-inside grid gap-2">
+            {blog.map(post => (
+              <li>
+                <a href={'/blog/' + post.id}>
+                  <span class="hover:underline">{format(post.data.publishDate, 'yyyy-MM-dd')} {post.data.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
